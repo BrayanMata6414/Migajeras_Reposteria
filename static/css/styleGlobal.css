@@ -1,0 +1,17 @@
+*
+{
+    box-sizing: border-box;
+    /*font-family: Agency FB, Verdana, Tahoma, sans-serif;*/
+    margin: 0;
+    padding: 0;
+}
+
+:root
+{
+    --color-DarkChocolate: #443025;
+    --color-Aloewood: #7f5836;
+    --color-MilkTea: #aa7f66;
+    --color-Sakura: #ec9c9d;
+    --color-MistyRose: #f2cfcb;
+    --color-Claro: #faf6eb;
+}
