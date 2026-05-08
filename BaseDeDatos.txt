@@ -17,18 +17,35 @@ CREATE TABLE empleados (
 );
 
 -- =========================================
+-- TABLA: CATEGORIAS
+-- =========================================
+
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    descripcion TEXT
+);
+
+-- =========================================
 -- TABLA: PRODUCTOS
 -- =========================================
 
 CREATE TABLE productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    id_categoria INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10,2) NOT NULL,
     cantidad INT NOT NULL DEFAULT 0,
     imagen VARCHAR(255),
     estado ENUM('disponible', 'no disponible') DEFAULT 'disponible',
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_producto_categoria
+        FOREIGN KEY (id_categoria)
+        REFERENCES categorias(id_categoria)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- =========================================
@@ -37,9 +54,15 @@ CREATE TABLE productos (
 
 CREATE TABLE recetas (
     id_receta INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    id_producto INT NOT NULL,
     elaboracion TEXT NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_receta_producto
+        FOREIGN KEY (id_producto)
+        REFERENCES productos(id_producto)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- =========================================
