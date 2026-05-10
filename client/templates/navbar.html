@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleGlobal.css') }}">
+
+    <title>{% block title %}Repostería{% endblock %}</title>
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <a href="/">Repostería</a>
+        </div>
+
+        <ul class="nav-links">
+
+            <!-- NAVBAR CLIENTES -->
+            {% if tipo_nav == "cliente" %}
+
+                <li>
+                    <a href="/menu">Menú</a>
+                </li>
+
+                <li>
+                    <a href="/about">Sobre nosotros</a>
+                </li>
+
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+
+            {% endif %}
+
+
+            <!-- NAVBAR EMPLEADOS -->
+            {% if tipo_nav == "empleado" %}
+
+                <li>
+                    <a href="/sales">Ventas</a>
+                </li>
+
+                <li>
+                    <a href="/products">Productos</a>
+                </li>
+
+                <li>
+                    <a href="/ingredients">Ingredientes</a>
+                </li>
+
+                <li>
+                    <a href="/recipes">Recetas</a>
+                </li>
+
+                <li>
+                    <a href="/logout">Cerrar sesión</a>
+                </li>
+
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 *
 {
     box-sizing: border-box;
-    /*font-family: Agency FB, Verdana, Tahoma, sans-serif;*/
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -14,4 +14,45 @@
     --color-Sakura: #ec9c9d;
     --color-MistyRose: #f2cfcb;
     --color-Claro: #faf6eb;
+}
+
+nav
+{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+}
+.navbar
+{
+    width: 80%;
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--color-Aloewood);
+
+    border-radius: 30px;
+}
+.navbar a
+{
+    padding: 10px;
+    color: var(--color-DarkChocolate);
+    text-decoration: none;
+    border-radius: 30px;
+}
+.navbar a:hover
+{
+    background-color: var(--color-MilkTea);
+}
+.navbar .activo
+{
+    color: var(--color-Claro);
+    background-color: var(--color-DarkChocolate);
 }
