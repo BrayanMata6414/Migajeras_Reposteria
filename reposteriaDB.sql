@@ -76,6 +76,9 @@ CREATE TABLE ingredientes (
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE ingredientes
+ADD imagen VARCHAR(255);
+
 -- =========================================
 -- TABLA: RELACION RECETAS - INGREDIENTES
 -- =========================================
@@ -198,5 +201,21 @@ VALUES
     'admin@gmail.com',
     '$2b$12$HSXeRwi5Me52pCSQwYVvOuQYVY25CeFQ0FHH9v9XEQW1lLxjQJCPe'
 );
+
+INSERT INTO ingredientes
+(nombre, unidad_medida, imagen)
+VALUES
+('Harina', 'kg', 'harina.jpg');
+
+INSERT INTO distribuidores
+(nombre, direccion, correo, telefono)
+VALUES
+('Maseca', 'Juarez', 'maseca@gmail.com', '6561111111'),
+('Bimbo', 'Juarez', 'bimbo@gmail.com', '6562222222');
+
+INSERT INTO stock
+(id_ingrediente, id_distribuidor, precio, cantidad)
+VALUES
+(1, 1, 300, 5);
 
 SELECT * FROM empleados;

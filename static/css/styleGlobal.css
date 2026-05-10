@@ -15,15 +15,16 @@
 {
     --color-DarkChocolate: #443025;
     --color-Aloewood: #7f5836;
-    --color-MilkTea: #aa7f66;
+    --color-MilkTea: #aa7f66; 
     --color-Sakura: #ec9c9d;
-    --color-MistyRose: #f2cfcb;
+    --color-MistyRose: #f2cfcb; 
     --color-Claro: #faf6eb;
 }
 
 body
 {
-    background-color: var(--color-MistyRose);
+    background-color: var(--color-Claro);
+    letter-spacing: 2px;
 }
 
 nav
@@ -46,7 +47,7 @@ nav
     align-items: center;
     justify-content: space-evenly;
 
-    background-color: var(--color-Aloewood);
+    background-color: var(--color-MilkTea);
 
     border-radius: 50px;
 }
@@ -62,7 +63,8 @@ nav
 }
 .navbar a:hover
 {
-    background-color: var(--color-MilkTea);
+    background-color: var(--color-Aloewood);
+    color: var(--color-Claro);
 }
 .navbar .activo
 {

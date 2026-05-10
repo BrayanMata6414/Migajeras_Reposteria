@@ -94,3 +94,41 @@ def obtener_empleado_por_correo(correo):
     conexion.close()
 
     return empleado
+
+# =========================================
+# OBTENER INGREDIENTES
+# =========================================
+
+def obtener_ingredientes():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(dictionary=True)
+
+    sql = """
+    SELECT
+
+        ingredientes.nombre AS ingrediente,
+        ingredientes.imagen,
+        stock.cantidad,
+        distribuidores.nombre AS distribuidor
+
+    FROM stock
+
+    INNER JOIN ingredientes
+        ON stock.id_ingrediente = ingredientes.id_ingrediente
+
+    INNER JOIN distribuidores
+        ON stock.id_distribuidor = distribuidores.id_distribuidor
+
+    ORDER BY stock.cantidad ASC
+    """
+
+    cursor.execute(sql)
+
+    ingredientes = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return ingredientes

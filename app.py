@@ -5,6 +5,12 @@ from server.db import (
     obtener_empleado_por_correo
 )
 
+from server.db import (
+    agregar_empleado,
+    obtener_empleado_por_correo,
+    obtener_ingredientes
+)
+
 from flask import (
     Flask,
     render_template,
@@ -224,11 +230,13 @@ def products():
 @login_required
 def ingredients():
 
+    ingredientes = obtener_ingredientes()
+
     return render_template(
         'auth/ingredients.html',
-        tipo_nav='empleado'
+        tipo_nav='empleado',
+        ingredientes=ingredientes
     )
-
 
 # ==================================================
 # RECETAS
