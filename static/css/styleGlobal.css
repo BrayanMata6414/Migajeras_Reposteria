@@ -21,6 +21,11 @@
     --color-Claro: #faf6eb;
 }
 
+body
+{
+    background-color: var(--color-MistyRose);
+}
+
 nav
 {
     width: 100%;
