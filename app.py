@@ -1,5 +1,10 @@
 import os
 
+from server.db import (
+    agregar_empleado,
+    obtener_empleado_por_correo
+)
+
 from flask import (
     Flask,
     render_template,
@@ -80,101 +85,46 @@ def about():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 
-    # Si ya inició sesión
-    if session.get('logged_in'):
-
-        puesto = session.get('puesto')
-
-        if puesto == 'Administrador':
-            return redirect(url_for('employees'))
-
-        elif puesto == 'Caja':
-            return redirect(url_for('sales'))
-
-        elif puesto == 'Almacen':
-            return redirect(url_for('ingredients'))
-
-        elif puesto == 'Cocina':
-            return redirect(url_for('recipes'))
-
-    # FORMULARIO LOGIN
     if request.method == 'POST':
 
         correo = request.form['correo']
         password = request.form['password']
 
-        # ==========================================
-        # EJEMPLO TEMPORAL
-        # DESPUES AQUI IRA MYSQL
-        # ==========================================
+        empleado = obtener_empleado_por_correo(correo)
 
-        usuarios = [
+        if empleado:
 
-            {
-                'correo': 'admin@gmail.com',
-                'password': '1234',
-                'puesto': 'Administrador'
-            },
-
-            {
-                'correo': 'caja@gmail.com',
-                'password': '1234',
-                'puesto': 'Caja'
-            },
-
-            {
-                'correo': 'almacen@gmail.com',
-                'password': '1234',
-                'puesto': 'Almacen'
-            },
-
-            {
-                'correo': 'cocina@gmail.com',
-                'password': '1234',
-                'puesto': 'Cocina'
-            }
-
-        ]
-
-        usuario_encontrado = None
-
-        for usuario in usuarios:
-
-            if (
-                usuario['correo'] == correo
-                and
-                usuario['password'] == password
+            if bcrypt.check_password_hash(
+                empleado['password'],
+                password
             ):
 
-                usuario_encontrado = usuario
-                break
+                session['logged_in'] = True
 
-        # LOGIN CORRECTO
-        if usuario_encontrado:
+                session['id_empleado'] = empleado['id_empleado']
 
-            session['logged_in'] = True
-            session['correo'] = usuario_encontrado['correo']
-            session['puesto'] = usuario_encontrado['puesto']
+                session['nombre'] = empleado['nombre']
 
-            puesto = usuario_encontrado['puesto']
+                session['puesto'] = empleado['puesto']
 
-            # ======================================
-            # REDIRECCION POR PUESTO
-            # ======================================
+                puesto = empleado['puesto']
 
-            if puesto == 'Administrador':
-                return redirect(url_for('employees'))
+                # ============================
+                # REDIRECCION POR PUESTO
+                # ============================
 
-            elif puesto == 'Caja':
-                return redirect(url_for('sales'))
+                if puesto == 'Administrador':
+                    return redirect(url_for('employees'))
 
-            elif puesto == 'Almacen':
-                return redirect(url_for('ingredients'))
+                elif puesto == 'Caja':
+                    return redirect(url_for('sales'))
 
-            elif puesto == 'Cocina':
-                return redirect(url_for('recipes'))
+                elif puesto == 'Almacen':
+                    return redirect(url_for('ingredients'))
 
-        # LOGIN INCORRECTO
+                elif puesto == 'Cocina':
+                    return redirect(url_for('recipes'))
+
         return render_template(
             'login.html',
             tipo_nav='cliente',
@@ -204,12 +154,33 @@ def logout():
 # SOLO ADMINISTRADOR
 # ==================================================
 
-@app.route('/employees')
+@app.route('/employees', methods=['GET', 'POST'])
 @login_required
 def employees():
 
     if session.get('puesto') != 'Administrador':
         return redirect(url_for('home'))
+
+    if request.method == 'POST':
+
+        matricula = request.form['matricula']
+        nombre = request.form['nombre']
+        puesto = request.form['puesto']
+        correo = request.form['correo']
+        password = request.form['password']
+
+        # ENCRIPTAR PASSWORD
+        password_hash = bcrypt.generate_password_hash(
+            password
+        ).decode('utf-8')
+
+        agregar_empleado(
+            matricula,
+            nombre,
+            puesto,
+            correo,
+            password_hash
+        )
 
     return render_template(
         'auth/employees.html',
@@ -226,14 +197,23 @@ def employees():
 @login_required
 def sales():
 
-    if session.get('puesto') != 'Caja':
-        return redirect(url_for('home'))
-
     return render_template(
         'auth/sales.html',
         tipo_nav='empleado'
     )
 
+# ==================================================
+# PRODUCTOS
+# ==================================================
+
+@app.route('/products')
+@login_required
+def products():
+
+    return render_template(
+        'auth/products.html',
+        tipo_nav='empleado'
+    )
 
 # ==================================================
 # INGREDIENTES
@@ -243,9 +223,6 @@ def sales():
 @app.route('/ingredients')
 @login_required
 def ingredients():
-
-    if session.get('puesto') != 'Almacen':
-        return redirect(url_for('home'))
 
     return render_template(
         'auth/ingredients.html',
@@ -261,9 +238,6 @@ def ingredients():
 @app.route('/recipes')
 @login_required
 def recipes():
-
-    if session.get('puesto') != 'Cocina':
-        return redirect(url_for('home'))
 
     return render_template(
         'auth/recipes.html',

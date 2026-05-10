@@ -1,0 +1,71 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+Empleados
+{% endblock %}
+
+{% block content %}
+
+<h1>Registrar empleado</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="matricula"
+        placeholder="Matrícula"
+        required
+    >
+
+    <input
+        type="text"
+        name="nombre"
+        placeholder="Nombre"
+        required
+    >
+
+    <select name="puesto" required>
+
+        <option value="">
+            Selecciona un puesto
+        </option>
+
+        <option value="Administrador">
+            Administrador
+        </option>
+
+        <option value="Caja">
+            Caja
+        </option>
+
+        <option value="Almacen">
+            Almacén
+        </option>
+
+        <option value="Cocina">
+            Cocina
+        </option>
+
+    </select>
+
+    <input
+        type="email"
+        name="correo"
+        placeholder="Correo"
+        required
+    >
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Contraseña"
+        required
+    >
+
+    <button type="submit">
+        Registrar empleado
+    </button>
+
+</form>
+
+{% endblock %}

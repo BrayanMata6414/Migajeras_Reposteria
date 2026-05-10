@@ -24,6 +24,8 @@
 
                 <a href="/"><img src="" alt="logo"></a>
 
+                <a href="/login">Inicar</a>
+
                 <a href="/menu">Menú</a>
 
                 <a href="/about">Sobre nosotros</a>
@@ -33,6 +35,10 @@
 
             <!-- NAVBAR EMPLEADOS -->
             {% if tipo_nav == "empleado" %}
+
+                {% if session.puesto == 'Administrador' %}
+                    <a href="/employees">Empleados</a>
+                {% endif %}
 
                 <a href="/sales">Ventas</a>
 

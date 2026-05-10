@@ -181,3 +181,22 @@ CREATE TABLE detalle_venta (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+INSERT INTO empleados
+(
+    matricula,
+    nombre,
+    puesto,
+    correo,
+    password
+)
+VALUES
+(
+    'ADMIN001',
+    'Administrador General',
+    'Administrador',
+    'admin@gmail.com',
+    '$2b$12$HSXeRwi5Me52pCSQwYVvOuQYVY25CeFQ0FHH9v9XEQW1lLxjQJCPe'
+);
+
+SELECT * FROM empleados;
