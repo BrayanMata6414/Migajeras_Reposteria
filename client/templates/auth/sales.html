@@ -1,33 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/static/css/styleGlobal.css">
+{% extends 'navbar.html' %}
 
-    <title>Ventas</title>
-</head>
-<body>
-    <nav>
-        <div class="navbar">
-            <a href="">Ventas</a>
+{% block title %}
+    Ventas
+{% endblock %}
 
-            <a href="">Productos</a>
+{% block content %}
 
-            <a href="">Ingredientes</a>
-                
-            <a href="">Recetas</a>
+    <h1>En venta</h1>
 
-        </div>
-    </nav> <!--reutilizable-->
-
-    <main>
-        <div class="titulo"></div> <!--reutilizable-->
+    <div class="titulo"></div> <!--reutilizable-->
 
         <div class="selec">
             <div class="boton">
@@ -62,6 +43,4 @@
             </div>
         </div>
 
-    </main>
-</body>
-</html>
+{% endblock %}
