@@ -15,58 +15,38 @@
 
 <body>
 
-    <nav class="navbar">
-
-        <div class="logo">
-            <a href="/">Repostería</a>
-        </div>
-
-        <ul class="nav-links">
+    <nav>
+        
+        <div class="navbar">
 
             <!-- NAVBAR CLIENTES -->
             {% if tipo_nav == "cliente" %}
 
-                <li>
-                    <a href="/menu">Menú</a>
-                </li>
+                <a href="/"><img src="" alt="logo"></a>
 
-                <li>
-                    <a href="/about">Sobre nosotros</a>
-                </li>
+                <a href="/menu">Menú</a>
 
-                <li>
-                    <a href="/login">Login</a>
-                </li>
-
+                <a href="/about">Sobre nosotros</a>
+                
             {% endif %}
 
 
             <!-- NAVBAR EMPLEADOS -->
             {% if tipo_nav == "empleado" %}
 
-                <li>
-                    <a href="/sales">Ventas</a>
-                </li>
+                <a href="/sales">Ventas</a>
 
-                <li>
-                    <a href="/products">Productos</a>
-                </li>
+                <a href="/products">Productos</a>
 
-                <li>
-                    <a href="/ingredients">Ingredientes</a>
-                </li>
+                <a href="/ingredients">Ingredientes</a>
 
-                <li>
-                    <a href="/recipes">Recetas</a>
-                </li>
+                <a href="/recipes">Recetas</a>
 
-                <li>
-                    <a href="/logout">Cerrar sesión</a>
-                </li>
+                <a href="/logout">Cerrar sesión</a>
 
             {% endif %}
 
-        </ul>
+        </div>
 
     </nav>
 
