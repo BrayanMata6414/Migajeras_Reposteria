@@ -57,6 +57,10 @@
     </nav>
 
     <main>
+        {% if tipo_nav == "empleado" %}
+            <h1 class="titulo">{% block titulo %}Repostería{% endblock %}</h1>
+        {% endif %}        
+
         {% block content %}{% endblock %}
     </main>
 

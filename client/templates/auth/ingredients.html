@@ -1,56 +1,58 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleCards.css') }}">
+
 {% extends 'navbar.html' %}
 
 {% block title %}
     Ingredientes
 {% endblock %}
 
+{% block titulo %} Ingredientes {% endblock %}
+
 {% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styleCards.css') }}">
+    <div class="cont-tarjetas">
 
-<div class="cont-tarjetas">
+        {% for ingrediente in ingredientes %}
 
-    {% for ingrediente in ingredientes %}
+            <div class="cont-tarjeta">
 
-        <div class="cont-tarjeta">
+                <div class="cont-img">
 
-            <div class="cont-img">
+                    <img
+                        src="{{ url_for('static', filename='img/jpg/' + ingrediente.imagen) }}"
+                        alt="ingrediente"
+                    >
 
-                <img
-                    src="{{ url_for('static', filename='img/jpg/' + ingrediente.imagen) }}"
-                    alt="ingrediente"
-                >
+                </div>
+
+                <div class="cont-nProd">
+
+                    <h2 id="nProducto">
+                        {{ ingrediente.ingrediente }}
+                    </h2>
+
+                    <h2 id="canProducto">
+                        Cantidad: {{ ingrediente.cantidad }}
+                    </h2>
+
+                </div>
+
+                <div class="cont-provedor">
+
+                    <h3 class="titulo-prov">
+                        Proveedor:
+                    </h3>
+
+                    <h3 class="nombre" id="nombre-prov">
+                        {{ ingrediente.distribuidor }}
+                    </h3>
+
+                </div>
 
             </div>
 
-            <div class="cont-nProd">
+        {% endfor %}
 
-                <h2 id="nProducto">
-                    {{ ingrediente.ingrediente }}
-                </h2>
-
-                <h2 id="canProducto">
-                    Cantidad: {{ ingrediente.cantidad }}
-                </h2>
-
-            </div>
-
-            <div class="cont-provedor">
-
-                <h3 class="titulo">
-                    Proveedor:
-                </h3>
-
-                <h3 class="nombre" id="nombre-prov">
-                    {{ ingrediente.distribuidor }}
-                </h3>
-
-            </div>
-
-        </div>
-
-    {% endfor %}
-
-</div>
+    </div>
 
 {% endblock %}

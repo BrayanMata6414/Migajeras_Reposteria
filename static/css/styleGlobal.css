@@ -71,3 +71,14 @@ nav
     color: var(--color-Claro);
     background-color: var(--color-DarkChocolate);
 }
+
+.titulo
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 50px;
+    font-family: "Cocogoose", sans-serif;
+    color: var(--color-DarkChocolate);
+    text-align: center;
+}
