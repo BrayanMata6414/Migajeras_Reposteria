@@ -218,4 +218,28 @@ INSERT INTO stock
 VALUES
 (1, 1, 300, 5);
 
+INSERT INTO categorias
+(nombre, descripcion)
+VALUES
+('Pastel', 'Pasteles completos y personalizados'),
+
+('Pan', 'Pan dulce y pan tradicional'),
+
+('Galleta', 'Galletas artesanales y decoradas'),
+
+('Cupcake', 'Cupcakes individuales de diferentes sabores'),
+
+('Postre', 'Postres fríos y especiales'),
+
+('Bebida', 'Bebidas frías y calientes'),
+
+('Gelatina', 'Gelatinas de distintos sabores'),
+
+('Pay', 'Pays dulces y tradicionales'),
+
+('Rosca', 'Roscas y panes grandes'),
+
+('Temporada', 'Productos especiales de temporada');
+
 SELECT * FROM empleados;
+SELECT * FROM productos;
