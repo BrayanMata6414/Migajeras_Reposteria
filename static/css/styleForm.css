@@ -12,7 +12,8 @@
     width: 550px;
     padding: 20px;
     position: relative;
-    background-color: var(--color-Sakura);
+    background-color: var(--color-MistyRose);
+    border: 5px solid var(--color-Sakura);
     border-radius: 20px;
 
     display: flex;

@@ -4,41 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/styleGlobal.css">
-    <link rel="stylesheet" href="/static/css/styleCards.css">
-    <link rel="stylesheet" href="/static/css/styleForm.css">
+    <link rel="stylesheet" href="/static/css/styleEmployees.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div class="cont-tarjetas" id="contenedor-tarjetas">
+    <div class="cont-tabla">
+        <div class="tabla">
+            <div class="cont-dat">
+                <p>matricula</p>
+                <p>nombre</p>
+                <p>puesto</p>
+                <p>correo</p>
 
-        <div class="cont-tarjeta cont-prod">
-
-            <div class="cont-img abajo">
-
-                <img src="/static/img/jpg/masa.jpg" alt="producto">
-
+                <div class="cont-boton">
+                    <button type="submit">editar</button>
+                    <button type="submit">borrar</button>
+                </div>
+                
             </div>
-
-            <div class="cont-nProd">
-
-                <h2 id="nProducto">
-                    masa
-                </h2>
-
-                <h2 id="canProducto">
-                    cantidad: 20
-                </h2>
-
-            </div>
-
-            <div class="cont-botones">
-                <button type="button" id="btn-des" class="btn-des">Descripcion</button>
-                <button type="button" id="btn-ing" class="btn-ing">Ingredientes</button>
-                <button type="button" id="btn-rec" class="btn-rec">Receta</button>
-            </div>
-
         </div>
+    </div>
+
+    <div class="cont-formEmp">
+        <form method="POST">
+
+            <input type="text" name="matricula" placeholder="Matrícula" required>
+
+            <input type="text" name="nombre" placeholder="Nombre" required>
+
+            <select name="puesto" required>
+
+                <option value="">
+                    Selecciona un puesto
+                </option>
+
+                <option value="Administrador">
+                    Administrador
+                </option>
+
+                <option value="Caja">
+                    Caja
+                </option>
+
+                <option value="Almacen">
+                    Almacén
+                </option>
+
+                <option value="Cocina">
+                    Cocina
+                </option>
+
+            </select>
+
+            <input type="email" name="correo" placeholder="Correo" required>
+
+            <input type="password" name="password" placeholder="Contraseña" required>
+
+            <button type="submit">
+                Registrar empleado
+            </button>
+
+        </form>
     </div>
 
 </body>

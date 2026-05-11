@@ -1,0 +1,59 @@
+.cont-tabla .tabla
+{
+    width: 85%;
+    border-radius: 20px;
+    background-color: var(--color-MistyRose);
+    border: 5px solid var(--color-Sakura);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.tabla .cont-dat
+{
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    border: 5px solid var(--color-Aloewood);
+    border-radius: 50px;
+    background-color: var(--color-Claro);
+}
+.tabla .cont-dat p
+{
+    padding: 5px;
+    text-align: center;
+}
+.tabla .cont-dat .cont-boton
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.cont-boton button
+{
+    padding: 5px;
+    margin: 0 10px;
+}
+
+
+.cont-formEmp, .cont-tabla
+{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cont-formEmp form
+{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--color-MistyRose);
+    border: 5px solid var(--color-Sakura);
+}
+.cont-formEmp form input, .cont-formEmp form select, .cont-formEmp form button
+{
+    height: 30px;
+}
