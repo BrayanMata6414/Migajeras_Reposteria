@@ -5,34 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/styleGlobal.css">
     <link rel="stylesheet" href="/static/css/styleCards.css">
+    <link rel="stylesheet" href="/static/css/styleForm.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div class="cont-tarjetas">
+    <div class="cont-tarjetas nuevo-ing">
 
         <div class="cont-tarjeta selecionable">
             <img class="img-agregar" src="" alt="agregar">
         </div>
 
-        <div class="cont-tarjeta">
-            <div class="cont-img">
-                <img src="/static/img/jpg/masa.jpg" alt="producto">
-            </div>
-
-            <div class="cont-nProd">
-                <h2 id="nProducto">Masa</h2>
-                <h2 id="canProducto">Cantidad: 10</h2>
-            </div>
-
-            <div class="cont-provedor">
-                <h3 class="titulo">Proveedor:</h3>
-                <h3 class="nombre" id="nombre-prov">Maseca</h3>
-            </div>
-
-        </div>
     </div>
 
-    
+    <div class="cont-form">
+        <form method="POST" enctype="multipart/form-data" class="form-ingrediente">
+
+            <h2>Agregar ingrediente</h2>
+
+            <!-- IMAGEN -->
+            <div class="input-group">
+
+                <label for="imagen">
+                    Imagen
+                </label>
+
+                <input class="sub-img"
+                    type="file"
+                    name="imagen"
+                    id="imagen"
+                    accept="image/*"
+                    required
+                >
+
+            </div>
+
+            <!-- NOMBRE -->
+            <div class="input-group">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Nombre del ingrediente"
+                    required
+                >
+
+            </div>
+
+            <!-- UNIDAD -->
+            <div class="input-group">
+
+                <label for="unidad_medida">
+                    Unidad de medida
+                </label>
+
+                <select
+                    name="unidad_medida"
+                    id="unidad_medida"
+                    required
+                >
+
+                    <option value="">
+                        Selecciona una unidad
+                    </option>
+
+                    <option value="kg">
+                        Kilogramos (kg)
+                    </option>
+
+                    <option value="g">
+                        Gramos (g)
+                    </option>
+
+                    <option value="L">
+                        Litros (L)
+                    </option>
+
+                    <option value="ml">
+                        Mililitros (ml)
+                    </option>
+
+                    <option value="pieza">
+                        Pieza
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- CANTIDAD -->
+            <div class="input-group">
+
+                <label for="cantidad">
+                    Cantidad
+                </label>
+
+                <input
+                    type="number"
+                    name="cantidad"
+                    id="cantidad"
+                    min="0"
+                    placeholder="Cantidad disponible"
+                    required
+                >
+
+            </div>
+
+            <!-- DISTRIBUIDOR -->
+            <div class="input-group">
+
+                <label for="distribuidor">
+                    Distribuidor
+                </label>
+
+                <select
+                    name="distribuidor"
+                    id="distribuidor"
+                    required
+                >
+
+                    <option value="">
+                        Selecciona un distribuidor
+                    </option>
+
+                    {% for distribuidor in distribuidores %}
+
+                        <option
+                            value="{{ distribuidor.id_distribuidor }}"
+                        >
+                            {{ distribuidor.nombre }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- BOTON -->
+            <button type="submit"> Guardar ingrediente </button>
+
+        </form>
+    </div>
+
 </body>
 </html>

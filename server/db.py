@@ -132,3 +132,119 @@ def obtener_ingredientes():
     conexion.close()
 
     return ingredientes
+
+# =========================================
+# AGREGAR INGREDIENTE
+# =========================================
+
+def agregar_ingrediente(
+    nombre,
+    unidad_medida,
+    imagen
+):
+
+    conexion = conectar()
+
+    cursor = conexion.cursor()
+
+    sql = """
+    INSERT INTO ingredientes
+    (
+        nombre,
+        unidad_medida,
+        imagen
+    )
+    VALUES
+    (
+        %s,
+        %s,
+        %s
+    )
+    """
+
+    valores = (
+        nombre,
+        unidad_medida,
+        imagen
+    )
+
+    cursor.execute(sql, valores)
+
+    conexion.commit()
+
+    id_ingrediente = cursor.lastrowid
+
+    cursor.close()
+    conexion.close()
+
+    return id_ingrediente
+
+
+# =========================================
+# AGREGAR STOCK
+# =========================================
+
+def agregar_stock(
+    id_ingrediente,
+    id_distribuidor,
+    cantidad
+):
+
+    conexion = conectar()
+
+    cursor = conexion.cursor()
+
+    sql = """
+    INSERT INTO stock
+    (
+        id_ingrediente,
+        id_distribuidor,
+        precio,
+        cantidad
+    )
+    VALUES
+    (
+        %s,
+        %s,
+        %s,
+        %s
+    )
+    """
+
+    valores = (
+        id_ingrediente,
+        id_distribuidor,
+        0,
+        cantidad
+    )
+
+    cursor.execute(sql, valores)
+
+    conexion.commit()
+
+    cursor.close()
+    conexion.close()
+
+# =========================================
+# OBTENER DISTRIBUIDORES
+# =========================================
+
+def obtener_distribuidores():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(dictionary=True)
+
+    sql = """
+    SELECT *
+    FROM distribuidores
+    """
+
+    cursor.execute(sql)
+
+    distribuidores = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return distribuidores

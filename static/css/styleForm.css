@@ -1,0 +1,67 @@
+.cont-form
+{
+    width: 100%;
+    padding: 10px;
+    /*background-color: black;
+    min-height: 100vh;*/
+
+    display: none;
+    justify-content: center;
+}
+
+.cont-form form
+{
+    width: 550px;
+    padding: 20px;
+    background-color: var(--color-Sakura);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form h2 
+{
+    font-family:"Cocogoose", sans-serif;
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group
+{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group .sub-img
+{
+    width: 100%;
+    display: flex;
+}
+
+.input-group label
+{
+    font-size: 25px;
+}
+
+.input-group input, .input-group select
+{
+    width: 300px;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.cont-form form button
+{
+    width: 300px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+}

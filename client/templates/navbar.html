@@ -26,9 +26,13 @@
 
                 <a href="/login">Inicar</a>
 
-                <a href="/menu">Menú</a>
+                <a href="/menu" class="{% if request.path == '/menu' %}activo{% endif %}">
+                    Menú
+                </a>
 
-                <a href="/about">Sobre nosotros</a>
+                <a href="/about" class="{% if request.path == '/about' %}activo{% endif %}">
+                    Sobre nosotros
+                </a>
                 
             {% endif %}
 
@@ -37,16 +41,26 @@
             {% if tipo_nav == "empleado" %}
 
                 {% if session.puesto == 'Administrador' %}
-                    <a href="/employees">Empleados</a>
+                    <a href="/employees" class="{% if request.path == '/employees' %}activo{% endif %}">
+                        Empleados
+                    </a>
                 {% endif %}
 
-                <a href="/sales">Ventas</a>
+                <a href="/sales" class="{% if request.path == '/sales' %}activo{% endif %}">
+                    Ventas
+                </a>
 
-                <a href="/products">Productos</a>
+                <a href="/products" class="{% if request.path == '/products' %}activo{% endif %}">
+                    Productos
+                </a>
 
-                <a href="/ingredients">Ingredientes</a>
+                <a href="/ingredients" class="{% if request.path == '/ingredients' %}activo{% endif %}">
+                    Ingredientes
+                </a>
 
-                <a href="/recipes">Recetas</a>
+                <a href="/recipes" class="{% if request.path == '/recipes' %}activo{% endif %}">
+                    Recetas
+                </a>
 
                 <a href="/logout">Cerrar sesión</a>
 

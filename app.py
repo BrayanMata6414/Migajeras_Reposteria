@@ -1,16 +1,5 @@
 import os
 
-from server.db import (
-    agregar_empleado,
-    obtener_empleado_por_correo
-)
-
-from server.db import (
-    agregar_empleado,
-    obtener_empleado_por_correo,
-    obtener_ingredientes
-)
-
 from flask import (
     Flask,
     render_template,
@@ -21,6 +10,25 @@ from flask import (
 )
 
 from flask_bcrypt import Bcrypt
+
+from werkzeug.utils import secure_filename
+
+from server.db import (
+
+    agregar_empleado,
+    obtener_empleado_por_correo,
+
+    obtener_ingredientes,
+    obtener_distribuidores,
+
+    agregar_ingrediente,
+    agregar_stock
+
+)
+
+# ==================================================
+# CONFIGURACION FLASK
+# ==================================================
 
 app = Flask(
     __name__,
@@ -52,7 +60,6 @@ def login_required(f):
 
     return decorated_function
 
-
 # ==================================================
 # PAGINAS PUBLICAS
 # ==================================================
@@ -82,7 +89,6 @@ def about():
         'about.html',
         tipo_nav='cliente'
     )
-
 
 # ==================================================
 # LOGIN
@@ -142,7 +148,6 @@ def login():
         tipo_nav='cliente'
     )
 
-
 # ==================================================
 # LOGOUT
 # ==================================================
@@ -153,7 +158,6 @@ def logout():
     session.clear()
 
     return redirect(url_for('home'))
-
 
 # ==================================================
 # EMPLEADOS
@@ -167,18 +171,33 @@ def employees():
     if session.get('puesto') != 'Administrador':
         return redirect(url_for('home'))
 
+    # ======================================
+    # AGREGAR EMPLEADO
+    # ======================================
+
     if request.method == 'POST':
 
         matricula = request.form['matricula']
+
         nombre = request.form['nombre']
+
         puesto = request.form['puesto']
+
         correo = request.form['correo']
+
         password = request.form['password']
 
+        # ==================================
         # ENCRIPTAR PASSWORD
+        # ==================================
+
         password_hash = bcrypt.generate_password_hash(
             password
         ).decode('utf-8')
+
+        # ==================================
+        # GUARDAR EMPLEADO
+        # ==================================
 
         agregar_empleado(
             matricula,
@@ -193,10 +212,8 @@ def employees():
         tipo_nav='empleado'
     )
 
-
 # ==================================================
 # VENTAS
-# SOLO CAJA
 # ==================================================
 
 @app.route('/sales')
@@ -223,24 +240,92 @@ def products():
 
 # ==================================================
 # INGREDIENTES
-# SOLO ALMACEN
 # ==================================================
 
-@app.route('/ingredients')
+@app.route('/ingredients', methods=['GET', 'POST'])
 @login_required
 def ingredients():
 
+    # ======================================
+    # GUARDAR INGREDIENTE
+    # ======================================
+
+    if request.method == 'POST':
+
+        # SOLO ADMINISTRADOR
+        if session.get('puesto') != 'Administrador':
+            return redirect(url_for('ingredients'))
+
+        nombre = request.form['nombre']
+
+        unidad_medida = request.form[
+            'unidad_medida'
+        ]
+
+        cantidad = request.form[
+            'cantidad'
+        ]
+
+        distribuidor = request.form[
+            'distribuidor'
+        ]
+
+        imagen = request.files['imagen']
+
+        # ==================================
+        # GUARDAR IMAGEN
+        # ==================================
+
+        nombre_imagen = secure_filename(
+            imagen.filename
+        )
+
+        ruta_imagen = os.path.join(
+            'static/img/jpg',
+            nombre_imagen
+        )
+
+        imagen.save(ruta_imagen)
+
+        # ==================================
+        # INSERTAR INGREDIENTE
+        # ==================================
+
+        id_ingrediente = agregar_ingrediente(
+            nombre,
+            unidad_medida,
+            nombre_imagen
+        )
+
+        # ==================================
+        # INSERTAR STOCK
+        # ==================================
+
+        agregar_stock(
+            id_ingrediente,
+            distribuidor,
+            cantidad
+        )
+
+        return redirect(url_for('ingredients'))
+
+    # ======================================
+    # CONSULTAR DATOS
+    # ======================================
+
     ingredientes = obtener_ingredientes()
+
+    distribuidores = obtener_distribuidores()
 
     return render_template(
         'auth/ingredients.html',
         tipo_nav='empleado',
-        ingredientes=ingredientes
+        ingredientes=ingredientes,
+        distribuidores=distribuidores
     )
 
 # ==================================================
 # RECETAS
-# SOLO COCINA
 # ==================================================
 
 @app.route('/recipes')
@@ -251,7 +336,6 @@ def recipes():
         'auth/recipes.html',
         tipo_nav='empleado'
     )
-
 
 # ==================================================
 # MAIN
