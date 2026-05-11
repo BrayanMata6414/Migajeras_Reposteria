@@ -17,7 +17,7 @@
 
             <!-- TARJETA NUEVO INGREDIENTE -->
 
-            <div class="cont-tarjeta selecionable" id="btn-agregar">
+            <div class="cont-tarjeta selecionable cont-prod" id="btn-agregar">
 
                 <img class="img-agregar" src="{{ url_for('static', filename='img/svg/nuevo.svg') }}" alt="agregar">
 
@@ -58,26 +58,20 @@
 
                     <div class="cont-botones">
 
-                        <button
-                            type="button"
-                            class="btn-des"
-                        >
+                        <button type="button" class="btn-des">
                             Descripción
                         </button>
 
-                        <button
-                            type="button"
-                            class="btn-ing"
-                        >
-                            Ingredientes
-                        </button>
+                        {% if producto.id_receta %}
+                            <button type="button" class="btn-ing">
+                                Ingredientes
+                            </button>
 
-                        <button
-                            type="button"
-                            class="btn-rec"
-                        >
-                            Receta
-                        </button>
+                            <button type="button" class="btn-rec">
+                                Receta
+                            </button>
+
+                        {% endif %}
 
                     </div>
 
@@ -88,5 +82,172 @@
         {% endif %}
 
     </div>
+
+    {% if session.puesto == 'Administrador' %}
+
+        <div class="cont-form" id="formulario">
+
+            <form method="POST" enctype="multipart/form-data" class="form-producto">
+
+                <!-- BOTON CERRAR -->
+                <button type="button" id="btn-cerrar" class="btn-cerrar">
+
+                    <img src="{{ url_for('static',filename='img/svg/iconoCerrar.svg') }}" alt="Cerrar">
+
+                </button>
+
+                <h2>
+                    Agregar producto
+                </h2>
+
+                <!-- IMAGEN -->
+                <div class="input-group">
+
+                    <label for="imagen">
+                        Imagen
+                    </label>
+
+                    <input class="sub-img" type="file" name="imagen" id="imagen" 
+                    accept="image/*" required>
+
+                </div>
+
+                <!-- NOMBRE -->
+                <div class="input-group">
+
+                    <label for="nombre">
+                        Nombre del producto
+                    </label>
+
+                    <input type="text" name="nombre" id="nombre" 
+                    placeholder="Nombre del producto" required>
+
+                </div>
+
+                <!-- DESCRIPCION -->
+                <div class="input-group">
+
+                    <label for="descripcion">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        name="descripcion"
+                        id="descripcion"
+                        placeholder="Descripción del producto"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <!-- PRECIO -->
+                <div class="input-group">
+
+                    <label for="precio">
+                        Precio
+                    </label>
+
+                    <input
+                        type="number"
+                        name="precio"
+                        id="precio"
+                        step="0.01"
+                        min="0"
+                        placeholder="Precio del producto"
+                        required
+                    >
+
+                </div>
+
+                <!-- CATEGORIA -->
+                <div class="input-group">
+
+                    <label for="categoria">
+                        Categoría
+                    </label>
+
+                    <select
+                        name="categoria"
+                        id="categoria"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona una categoría
+                        </option>
+
+                        {% for categoria in categorias %}
+
+                            <option
+                                value="{{ categoria.id_categoria }}"
+                            >
+
+                                {{ categoria.nombre }}
+
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <!-- BOTON -->
+                <button
+                    type="submit"
+                    class="btn-sub"
+                >
+
+                    Guardar producto
+
+                </button>
+
+            </form>
+
+        </div>
+
+    {% endif %}
+
+        <script>
+            const botonAgregar =
+                document.getElementById('btn-agregar');
+
+            const botonCerrar =
+                document.getElementById('btn-cerrar');
+
+            const formulario =
+                document.getElementById('formulario');
+
+            const tarjetas =
+                document.getElementById('contenedor-tarjetas');
+
+            // MOSTRAR FORMULARIO
+
+            if (botonAgregar) {
+
+                botonAgregar.addEventListener('click', () => {
+
+                    formulario.style.display = 'flex';
+
+                    tarjetas.style.display = 'none';
+
+                });
+
+            }
+
+            // CERRAR FORMULARIO
+
+            if (botonCerrar) {
+
+                botonCerrar.addEventListener('click', () => {
+
+                    formulario.style.display = 'none';
+
+                    tarjetas.style.display = 'flex';
+
+                });
+
+            }
+        </script>
 
 {% endblock %}

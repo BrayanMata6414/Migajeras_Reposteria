@@ -255,19 +255,29 @@ def obtener_distribuidores():
 
 def obtener_productos():
 
-    conexion = conectar()
+    conexion = mysql.connector.connect(
+        **db_config
+    )
 
     cursor = conexion.cursor(
         dictionary=True
     )
 
-    sql = """
-    SELECT *
-    FROM productos
-    ORDER BY cantidad ASC
+    query = """
+        SELECT
+            productos.*,
+
+            recetas.id_receta
+
+        FROM productos
+
+        LEFT JOIN recetas
+            ON productos.id_producto = recetas.id_producto
+
+        ORDER BY productos.cantidad ASC
     """
 
-    cursor.execute(sql)
+    cursor.execute(query)
 
     productos = cursor.fetchall()
 
@@ -275,3 +285,73 @@ def obtener_productos():
     conexion.close()
 
     return productos
+
+
+# =========================================
+# AGREGAR PRODUCTOS
+# =========================================
+
+def agregar_producto(
+    id_categoria,
+    nombre,
+    descripcion,
+    precio,
+    imagen
+):
+
+    conexion = mysql.connector.connect(**db_config)
+
+    cursor = conexion.cursor()
+
+    query = """
+        INSERT INTO productos
+        (
+            id_categoria,
+            nombre,
+            descripcion,
+            precio,
+            imagen
+        )
+        VALUES
+        (%s, %s, %s, %s, %s)
+    """
+
+    valores = (
+        id_categoria,
+        nombre,
+        descripcion,
+        precio,
+        imagen
+    )
+
+    cursor.execute(query, valores)
+
+    conexion.commit()
+
+    cursor.close()
+    conexion.close()
+
+# =========================================
+# AGREGAR PRODUCTOS
+# =========================================
+
+def obtener_categorias():
+
+    conexion = mysql.connector.connect(**db_config)
+
+    cursor = conexion.cursor(dictionary=True)
+
+    query = """
+        SELECT *
+        FROM categorias
+        ORDER BY nombre ASC
+    """
+
+    cursor.execute(query)
+
+    categorias = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return categorias

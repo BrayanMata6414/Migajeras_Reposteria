@@ -49,13 +49,20 @@ form h2
     font-size: 25px;
 }
 
-.input-group input, .input-group select
+.input-group input, .input-group select, .input-group textarea
 {
     width: 300px;
     padding: 5px;
     font-size: 20px;
     border-radius: 20px;
     text-align: center;
+}
+
+.input-group textarea
+{
+    width: 350px;
+    height: 160px;
+    resize: none;
 }
 
 .cont-form form .btn-sub

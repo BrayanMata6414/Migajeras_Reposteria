@@ -20,10 +20,13 @@ from server.db import (
 
     obtener_ingredientes,
     obtener_distribuidores,
-    obtener_productos,
 
     agregar_ingrediente,
-    agregar_stock
+    agregar_stock,
+
+    agregar_producto,
+    obtener_productos,
+    obtener_categorias
 
 )
 
@@ -230,15 +233,65 @@ def sales():
 # PRODUCTOS
 # ==================================================
 
-@app.route('/products')
+@app.route('/products', methods=['GET', 'POST'])
 @login_required
 def products():
+
+    # ======================================
+    # GUARDAR PRODUCTO
+    # ======================================
+
+    if request.method == 'POST':
+
+        nombre = request.form['nombre']
+        descripcion = request.form['descripcion']
+        precio = request.form['precio']
+        categoria = request.form['categoria']
+
+        imagen = request.files['imagen']
+
+        nombre_imagen = secure_filename(
+            imagen.filename
+        )
+
+        ruta_imagen = os.path.join(
+            app.root_path,
+            'client',
+            'static',
+            'img',
+            'jpg',
+            nombre_imagen
+        )
+
+        os.makedirs(
+            os.path.dirname(ruta_imagen),
+            exist_ok=True
+        )
+
+        imagen.save(ruta_imagen)
+
+        agregar_producto(
+            categoria,
+            nombre,
+            descripcion,
+            precio,
+            nombre_imagen
+        )
+
+        return redirect(url_for('products'))
+
+    # ======================================
+    # CONSULTAS
+    # ======================================
+
+    categorias = obtener_categorias()
 
     productos = obtener_productos()
 
     return render_template(
         'auth/products.html',
         tipo_nav='empleado',
+        categorias=categorias,
         productos=productos
     )
 
