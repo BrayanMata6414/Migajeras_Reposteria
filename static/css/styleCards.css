@@ -82,3 +82,26 @@
     background-color: var(--color-Aloewood);
     border-radius: 50%;
 }
+
+.abajo
+{
+    align-items: flex-end;
+}
+.cont-prod
+{
+    height: 330px;
+}
+
+.cont-botones button
+{
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--color-DarkChocolate);
+    color: var(--color-Claro);
+}
+.cont-botones button:hover
+{
+    background-color: var(--color-Claro);
+    color: var(--color-DarkChocolate);
+}

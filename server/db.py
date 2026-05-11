@@ -248,3 +248,30 @@ def obtener_distribuidores():
     conexion.close()
 
     return distribuidores
+
+# =========================================
+# OBTENER PRODUCTOS
+# =========================================
+
+def obtener_productos():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(
+        dictionary=True
+    )
+
+    sql = """
+    SELECT *
+    FROM productos
+    ORDER BY cantidad ASC
+    """
+
+    cursor.execute(sql)
+
+    productos = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return productos

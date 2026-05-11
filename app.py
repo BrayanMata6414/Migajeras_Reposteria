@@ -20,6 +20,7 @@ from server.db import (
 
     obtener_ingredientes,
     obtener_distribuidores,
+    obtener_productos,
 
     agregar_ingrediente,
     agregar_stock
@@ -233,9 +234,12 @@ def sales():
 @login_required
 def products():
 
+    productos = obtener_productos()
+
     return render_template(
         'auth/products.html',
-        tipo_nav='empleado'
+        tipo_nav='empleado',
+        productos=productos
     )
 
 # ==================================================

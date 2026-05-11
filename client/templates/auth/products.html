@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleCards.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleForm.css') }}">
+
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -8,6 +11,82 @@
 
 {% block content %}
 
-    <h1>Tres de asado por favor</h1>
+    <div class="cont-tarjetas" id="contenedor-tarjetas">
+
+        {% if session.puesto == 'Administrador' %}
+
+            <!-- TARJETA NUEVO INGREDIENTE -->
+
+            <div class="cont-tarjeta selecionable" id="btn-agregar">
+
+                <img class="img-agregar" src="{{ url_for('static', filename='img/svg/nuevo.svg') }}" alt="agregar">
+
+            </div>
+            
+        {% endif %}
+
+        {% if productos %}
+
+            {% for producto in productos %}
+
+                <div class="cont-tarjeta cont-prod">
+
+                    <div class="cont-img abajo">
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='img/jpg/' + producto.imagen
+                            ) }}"
+                            alt="producto"
+                        >
+
+                    </div>
+
+                    <div class="cont-nProd">
+
+                        <h2 id="nProducto">
+                            {{ producto.nombre }}
+                        </h2>
+
+                        <h2 id="canProducto">
+                            Cantidad:
+                            {{ producto.cantidad }}
+                        </h2>
+
+                    </div>
+
+                    <div class="cont-botones">
+
+                        <button
+                            type="button"
+                            class="btn-des"
+                        >
+                            Descripción
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-ing"
+                        >
+                            Ingredientes
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-rec"
+                        >
+                            Receta
+                        </button>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
 
 {% endblock %}
