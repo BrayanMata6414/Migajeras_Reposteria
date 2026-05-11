@@ -157,7 +157,7 @@ def logout():
 
     session.clear()
 
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 # ==================================================
 # EMPLEADOS

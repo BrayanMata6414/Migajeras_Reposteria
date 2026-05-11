@@ -19,7 +19,7 @@
 
             <div class="cont-tarjeta selecionable" id="btn-agregar">
 
-                <img class="img-agregar" src="{{ url_for('static', filename='img/icons/add.png') }}" alt="agregar">
+                <img class="img-agregar" src="{{ url_for('static', filename='img/svg/nuevo.svg') }}" alt="agregar">
 
             </div>
             
@@ -75,7 +75,9 @@
             <form method="POST" enctype="multipart/form-data" class="form-ingrediente">
 
                 <button type="button" id="btn-cerrar" class="btn-cerrar">
-                    X
+
+                    <img src="{{ url_for('static', filename='img/svg/iconoCerrar.svg') }}" alt="Cerrar">
+                
                 </button>
 
                 <h2>Agregar ingrediente</h2>
@@ -184,7 +186,7 @@
 
                 </div>
 
-                <button type="submit">
+                <button type="submit" class="btn-sub">
                     Guardar ingrediente
                 </button>
 

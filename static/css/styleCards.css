@@ -77,5 +77,8 @@
 }
 .img-agregar
 {
-
+    width: 80%;
+    padding: 30px;
+    background-color: var(--color-Aloewood);
+    border-radius: 50%;
 }

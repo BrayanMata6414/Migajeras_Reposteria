@@ -60,11 +60,17 @@ nav
     color: var(--color-DarkChocolate);
     text-decoration: none;
     border-radius: 30px;
+
+    display: flex;
 }
 .navbar a:hover
 {
     background-color: var(--color-Aloewood);
     color: var(--color-Claro);
+}
+.navbar a img
+{
+    width: 40px;
 }
 .navbar .activo
 {
