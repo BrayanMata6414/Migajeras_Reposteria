@@ -150,12 +150,13 @@ def login():
         return render_template(
             'login.html',
             tipo_nav='cliente',
-            error='Correo o contraseña incorrectos'
+            mostrar_navbar=False
         )
 
     return render_template(
         'login.html',
-        tipo_nav='cliente'
+        tipo_nav='cliente',
+        mostrar_navbar=False
     )
 
 # ==================================================

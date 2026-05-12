@@ -28,7 +28,54 @@ body
     overflow-x: hidden;
 }
 
-nav
+/* ── NAVBAR ── */
+.nav-cli {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+.nav-cli .navbar {
+    width: 80%;
+    height: 70px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-Aloewood);
+    border-radius: 50px;
+}
+.nav-cli .navbar-logo img {
+    height: 50px;
+    padding-left: 10px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+.nav-cli .navbar-links {
+    display: flex;
+    gap: 8px;
+}
+.nav-cli .navbar .navbar-links a {
+    font-family: "Cocogoose", sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    color: var(--color-Claro);
+    text-decoration: none;
+    border-radius: 30px;
+}
+.nav-cli .navbar .navbar-links a:hover {
+    background-color: var(--color-MilkTea);
+}
+.nav-cli .navbar .activo {
+    color: var(--color-Claro);
+    background-color: var(--color-DarkChocolate);
+}
+
+
+.nav-emp
 {
     width: 100%;
     height: auto;
@@ -39,7 +86,7 @@ nav
 
     padding: 20px;
 }
-.navbar
+.nav-emp .navbar
 {
     width: 80%;
     height: 70px;
@@ -52,7 +99,7 @@ nav
 
     border-radius: 50px;
 }
-.navbar a
+.nav-emp .navbar a
 {
     font-family: "Cocogoose", sans-serif;
     font-size: 20px;
@@ -64,16 +111,16 @@ nav
 
     display: flex;
 }
-.navbar a:hover
+.nav-emp .navbar a:hover
 {
     background-color: var(--color-Aloewood);
     color: var(--color-Claro);
 }
-.navbar a img
+.nav-emp .navbar a img
 {
     width: 40px;
 }
-.navbar .activo
+.nav-emp .navbar .activo
 {
     color: var(--color-Claro);
     background-color: var(--color-DarkChocolate);

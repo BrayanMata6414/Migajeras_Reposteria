@@ -9,7 +9,9 @@
 
 .activo
 {
+    height: 100vh;
     display: flex;
+    align-items: center;
 }
 
 .cont-form form

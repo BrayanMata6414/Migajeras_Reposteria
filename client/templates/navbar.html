@@ -15,35 +15,41 @@
 
 <body>
 
-    <nav>
-        
-        <div class="navbar">
+    {% if mostrar_navbar != False %}
+        <!-- NAVBAR CLIENTES -->
+        {% if tipo_nav == "cliente" %}
+            <nav class="nav-cli">
 
-            <!-- NAVBAR CLIENTES -->
-            {% if tipo_nav == "cliente" %}
+                <div class="navbar">
+                    <div class="navbar-logo">
+                        <a href="/">
+                            <img src="static/img/png/MigajeraLogo_Cabeza_SinColor-01-01.png" alt="Migajera Repostería">
+                        </a>
+                    </div>
+                    <div class="navbar-links">
+                        <a href="/menu" class="{% if request.path == '/menu' %}activo{% endif %}">
+                            Menú
+                        </a>
+                        <a href="/about" class="{% if request.path == '/about' %}activo{% endif %}">
+                            Sobre nosotros
+                        </a>
+                    </div>
 
-                <a href="/"><img src="" alt="logo"></a>
+                </div>
+            </nav>
+        {% endif %}
+    {% endif %}
 
-                <a href="/login">Inicar</a>
+    <!-- NAVBAR EMPLEADOS -->
+    {% if tipo_nav == "empleado" %}
+        <nav class="nav-emp">
 
-                <a href="/menu" class="{% if request.path == '/menu' %}activo{% endif %}">
-                    Menú
-                </a>
-
-                <a href="/about" class="{% if request.path == '/about' %}activo{% endif %}">
-                    Sobre nosotros
-                </a>
-                
-            {% endif %}
-
-
-            <!-- NAVBAR EMPLEADOS -->
-            {% if tipo_nav == "empleado" %}
+            <div class="navbar">
 
                 {% if session.puesto == 'Administrador' %}
-                    <a href="/employees" class="{% if request.path == '/employees' %}activo{% endif %}">
-                        Empleados
-                    </a>
+                <a href="/employees" class="{% if request.path == '/employees' %}activo{% endif %}">
+                    Empleados
+                </a>
                 {% endif %}
 
                 <a href="/sales" class="{% if request.path == '/sales' %}activo{% endif %}">
@@ -66,11 +72,10 @@
                     <img src="{{ url_for('static', filename='img/svg/iconoCerrarSesion.svg') }}" alt="Cerrar sesión">
                 </a>
 
-            {% endif %}
+            </div>
 
-        </div>
-
-    </nav>
+        </nav>
+    {% endif %}
 
     <main>
         {% if tipo_nav == "empleado" %}
