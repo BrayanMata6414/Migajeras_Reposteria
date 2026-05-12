@@ -32,7 +32,10 @@ from server.db import (
 
     agregar_producto,
     obtener_productos,
-    obtener_categorias
+    obtener_categorias,
+
+    obtener_ventas_hoy,
+    obtener_detalle_venta
 
 )
 
@@ -284,9 +287,32 @@ def delete_employee(id_empleado):
 @login_required
 def sales():
 
+    ventas = obtener_ventas_hoy()
+
+    # =====================================
+    # AGREGAR DETALLES A CADA VENTA
+    # =====================================
+
+    for venta in ventas:
+
+        detalles = obtener_detalle_venta(
+            venta['id_venta']
+        )
+
+        venta['detalles'] = detalles
+
+    total_ventas = len(ventas)
+
     return render_template(
+
         'auth/sales.html',
-        tipo_nav='empleado'
+
+        tipo_nav='empleado',
+
+        ventas=ventas,
+
+        total_ventas=total_ventas
+
     )
 
 # ==================================================

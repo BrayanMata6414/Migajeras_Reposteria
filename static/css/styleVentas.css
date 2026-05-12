@@ -17,17 +17,68 @@
     cursor: pointer;
 }
 
-.activo
+.activo-boton
 {
     background-color: var(--color-DarkChocolate);
     
 }
-.cont-opciones .activo:hover
+.cont-opciones .activo-boton:hover
 {
     background-color: var(--color-DarkChocolate);
     cursor: default;
 }
-.activo h2
+.activo-boton h2
 {
     color: var(--color-Claro);
+}
+
+.cont-vent
+{
+    width: 100%;
+    height: 700px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.cont-cat
+{
+    width: 300px;
+    background-color: var(--color-MilkTea);
+    padding: 5px;
+    border-right: 10px solid var(--color-DarkChocolate);
+}
+.cat
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.cont-cat h2
+{
+    padding: 5px;
+    margin: 10px 0;
+    color: var(--color-Claro);
+}
+.cont-cat h3
+{
+    width: 90%;
+    padding: 5px;
+    margin: 5px 0;
+    text-align: center;
+    color: var(--color-DarkChocolate);
+    border: 5px solid var(--color-DarkChocolate);
+    border-radius: 20px;
+}
+
+.cont-produc-vent
+{
+    width: 850px;
+    background-color: var(--color-MistyRose);
+    overflow-y: auto;
+    border-radius: 0 0 10px 10px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }

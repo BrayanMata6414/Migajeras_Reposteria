@@ -468,3 +468,66 @@ def obtener_categorias():
     conexion.close()
 
     return categorias
+
+# =========================================
+# OBTENER VENTAS DEL DIA
+# =========================================
+
+def obtener_ventas_hoy():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(
+        dictionary=True
+    )
+
+    query = """
+        SELECT *
+        FROM ventas
+        WHERE fecha_venta = CURDATE()
+        ORDER BY id_venta DESC
+    """
+
+    cursor.execute(query)
+
+    ventas = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return ventas
+
+# =========================================
+# OBTENER PRODUCTOS DE UNA VENTA
+# =========================================
+
+def obtener_detalle_venta(id_venta):
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(
+        dictionary=True
+    )
+
+    query = """
+        SELECT
+            detalle_venta.cantidad,
+            detalle_venta.subtotal,
+            productos.nombre
+        FROM detalle_venta
+
+        INNER JOIN productos
+        ON detalle_venta.id_producto =
+        productos.id_producto
+
+        WHERE detalle_venta.id_venta = %s
+    """
+
+    cursor.execute(query, (id_venta,))
+
+    detalles = cursor.fetchall()
+
+    cursor.close()
+    conexion.close()
+
+    return detalles

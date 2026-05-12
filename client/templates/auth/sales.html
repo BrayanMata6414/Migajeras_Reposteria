@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleVentas.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleTickets.css') }}">
+
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -8,41 +11,108 @@
 
 {% block content %}
 
-    <h1>En venta</h1>
+    <div class="cont-opciones">
 
-    <div class="titulo"></div> <!--reutilizable-->
+        <div class="boton activo-boton">
 
-        <div class="selec">
-            <div class="boton">
-                <h3>
-                    Ventas del dia: 0
-                </h3>
-            </div>
-
-            <div class="boton">
-                <h3>
-                    Hacer una venta
-                </h3>
-            </div>
+            <h2>
+                Ventas del día:
+                {{ total_ventas }}
+            </h2>
 
         </div>
 
-        <div class="ticket">
-            <h3></h3>
+        <div class="boton">
 
-            <div class="contenido">
-                <div class="productos">
+            <h2>
+                Hacer una venta
+            </h2>
 
-                </div>
-                
-                <h3 class="total"></h3>
-
-                <div class="informacion">
-                    <p class="fecha"></p>
-                    <p class="hora"></p>
-                    <p class="empleado"></p>
-                </div>
-            </div>
         </div>
+
+    </div>
+
+    <div class="cont-tick">
+
+        {% for venta in ventas %}
+
+            <div class="ticket">
+
+                <h2>
+
+                    Ticket #{{ venta.id_venta }}
+
+                </h2>
+
+                <div class="cont-datos">
+
+                    <!-- PRODUCTOS -->
+
+                    <div class="cont-com">
+
+                        {% for detalle in venta.detalles %}
+
+                            <div class="com">
+
+                                <p>
+
+                                    {{ detalle.cantidad }}
+                                    {{ detalle.nombre }}
+
+                                </p>
+
+                                <p>
+
+                                    ${{ detalle.subtotal }}
+
+                                </p>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- TOTAL -->
+
+                    <div class="cont-total">
+
+                        <h3>Total</h3>
+
+                        <h3>
+
+                            ${{ venta.total }}
+
+                        </h3>
+
+                    </div>
+
+                    <!-- FECHA -->
+
+                    <div class="cont-fecha">
+
+                        <p>
+
+                            Fecha:
+                            {{ venta.fecha_venta }}
+
+                        </p>
+
+                        <p>
+
+                            Hora:
+                            {{ venta.hora_venta }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 {% endblock %}
