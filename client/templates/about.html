@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleAbout.css') }}">
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -6,6 +7,99 @@
 
 {% block content %}
 
-    <h1>Bienvenido X3</h1>
+        <main>
+
+        <!-- ══ TÍTULO ══ -->
+        <section class="page-title">
+            <h1>Nosotros</h1>
+        </section>
+
+        <!-- ══ QUIÉNES SOMOS ══ -->
+        <section class="quienes">
+            <img class="quienes-img"
+                 src="../../static/img/png/Assets_Pancitos-01.png"
+                 alt="Croissant">
+            <div class="quienes-text">
+                <h2>¿Quiénes somos?</h2>
+                <p>Migajera Repostería es un emprendimiento dedicado a la elaboración de productos artesanales, enfocado en brindar experiencias dulces y memorables. Nos apoyamos en un sistema digital que nos permite organizar nuestras operaciones y ofrecer un servicio más eficiente y cercano a nuestros clientes.</p>
+            </div>
+        </section>
+
+        <!-- ══ MISIÓN ══ -->
+        <section class="mision">
+            <div class="mision-text">
+                <h2>Misión</h2>
+                <p>Ofrecer productos de repostería de alta calidad, combinando creatividad, sabor y atención personalizada, apoyados en herramientas digitales que faciliten la gestión del negocio y mejoren la experiencia del cliente.</p>
+            </div>
+            <img class="mision-img"
+                 src="../../static/img/png/Assets_Pancitos-03.png"
+                 alt="Dona">
+        </section>
+
+        <!-- ══ VISIÓN ══ -->
+        <section class="vision">
+            <img class="vision-img"
+                 src="../../static/img/png/Assets_Pancitos-02.png"
+                 alt="Pan">
+            <div class="vision-text">
+                <h2>Visión</h2>
+                <p>Ser una repostería reconocida por su innovación, calidad y presencia digital, destacando tanto por la excelencia de sus productos como por la eficiencia en sus procesos y atención al cliente.</p>
+            </div>
+        </section>
+
+        <!-- ══ CONOCE A LOS MIGAJEROS ══ -->
+        <section class="migajeros-intro">
+            <div class="migajeros-intro-text">
+                <p>"Conoce a los</p>
+                <h2>migajeros"</h2>
+            </div>
+            <img class="migajeros-blob"
+                 src="../../static/img/png/Paloma-ConFigura.png"
+                 alt="Paloma Migajera">
+        </section>
+
+        <!-- ══ EQUIPO ══ -->
+        <section class="team">
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="../../static/img/png/Isa-Migajera.png" alt="Evelyn">
+                </div>
+                <h3>Evelyn</h3>
+                <p>"Me encanta el pan dulce tanto como diseñar"</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="../../static/img/png/Brayan-Migajero.png" alt="Brayan">
+                </div>
+                <h3>Brayan</h3>
+                <p>"Programar y comer cheesecake son lo que más me emociona"</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">
+                    <img src="../../static/img/png/Zelda-Migajera.png" alt="Zelda">
+                </div>
+                <h3>Zelda</h3>
+                <p>"Diseñar para mí es tan dulce como un pastel de red velvet"</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+        </div>
+        <div class="footer-brand">
+            <img src="../../static/img/png/MigajeraLogo_Completo_SinColor-01.png" alt="Migajera Repostería">
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="about.html">Nosotros</a>
+        </div>
+        <p class="footer-bottom">¿Eres empleado? <a href="#">Inicia sesión</a></p>
+    </footer>
 
 {% endblock %}
