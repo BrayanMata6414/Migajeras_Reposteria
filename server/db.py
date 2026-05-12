@@ -70,6 +70,44 @@ def agregar_empleado(
     conexion.close()
 
 # =========================================
+# EDITAR EMPLEADO
+# =========================================
+
+def actualizar_empleado(
+    id_empleado,
+    nombre,
+    puesto,
+    correo
+):
+
+    conexion = conectar()
+
+    cursor = conexion.cursor()
+
+    query = """
+        UPDATE empleados
+        SET
+            nombre = %s,
+            puesto = %s,
+            correo = %s
+        WHERE id_empleado = %s
+    """
+
+    valores = (
+        nombre,
+        puesto,
+        correo,
+        id_empleado
+    )
+
+    cursor.execute(query, valores)
+
+    conexion.commit()
+
+    cursor.close()
+    conexion.close()
+
+# =========================================
 # ELIMINAR EMPLEADO
 # =========================================
 

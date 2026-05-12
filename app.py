@@ -18,6 +18,7 @@ from werkzeug.utils import secure_filename
 from server.db import (
 
     agregar_empleado,
+    actualizar_empleado,
     eliminar_empleado,
     obtener_empleado_por_correo,
     obtener_empleados,
@@ -204,25 +205,44 @@ def employees():
 
     if request.method == 'POST':
 
+        id_empleado = request.form['id_empleado']
+
+        matricula = request.form['matricula']
         nombre = request.form['nombre']
-
         puesto = request.form['puesto']
-
         correo = request.form['correo']
-
         password = request.form['password']
 
-        password_hash = bcrypt.generate_password_hash(
-            password
-        ).decode('utf-8')
+        # =====================================
+        # EDITAR EMPLEADO
+        # =====================================
 
-        agregar_empleado(
-            matricula,
-            nombre,
-            puesto,
-            correo,
-            password_hash
-        )
+        if id_empleado != '':
+
+            actualizar_empleado(
+                id_empleado,
+                nombre,
+                puesto,
+                correo
+            )
+
+        # =====================================
+        # NUEVO EMPLEADO
+        # =====================================
+
+        else:
+
+            password_hash = bcrypt.generate_password_hash(
+                password
+            ).decode('utf-8')
+
+            agregar_empleado(
+                matricula,
+                nombre,
+                puesto,
+                correo,
+                password_hash
+            )
 
         return redirect(url_for('employees'))
 

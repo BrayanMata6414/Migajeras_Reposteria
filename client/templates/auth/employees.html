@@ -40,7 +40,7 @@ Empleados
 
                             <button type="button" class="btn-editar" data-id="{{ empleado.id_empleado }}"
                                 data-nombre="{{ empleado.nombre }}" data-puesto="{{ empleado.puesto }}"
-                                data-correo="{{ empleado.correo }}">
+                                data-correo="{{ empleado.correo }}" data-matricula="{{ empleado.matricula }}">
                                 Editar
                             </button>
 
@@ -68,14 +68,12 @@ Empleados
 
         <form method="POST" id="form-empleado">
 
+            <!-- ID OCULTO -->
+            <input type="hidden" name="id_empleado" id="input-id">
+
             <!-- MATRICULA -->
 
-            <input
-                type="text"
-                name="matricula"
-                value="{{ matricula }}"
-                readonly
-            >
+            <input type="text" name="matricula" value="{{ matricula }}" readonly>
 
             <!-- NOMBRE -->
 
@@ -129,20 +127,28 @@ Empleados
 
     <script>
 
+        const inputId =
+        document.getElementById('input-id');
+
+        const inputMatricula =
+        document.querySelector(
+        'input[name="matricula"]'
+        );
+
         const inputNombre =
-            document.getElementById('input-nombre');
+        document.getElementById('input-nombre');
 
         const inputCorreo =
-            document.getElementById('input-correo');
+        document.getElementById('input-correo');
 
         const inputPuesto =
-            document.getElementById('input-puesto');
+        document.getElementById('input-puesto');
 
         const botonesEditar =
-            document.querySelectorAll('.btn-editar');
+        document.querySelectorAll('.btn-editar');
 
         const empleados =
-            document.querySelectorAll('.cont-dat');
+        document.querySelectorAll('.cont-dat');
 
         // =====================================
         // GENERAR CORREO AUTOMATICO
@@ -178,14 +184,24 @@ Empleados
                 // LLENAR FORMULARIO
                 // =============================
 
+                inputId.value =
+                boton.dataset.id;
+
                 inputNombre.value =
-                    boton.dataset.nombre;
+                boton.dataset.nombre;
 
                 inputPuesto.value =
-                    boton.dataset.puesto;
+                boton.dataset.puesto;
 
                 inputCorreo.value =
-                    boton.dataset.correo;
+                boton.dataset.correo;
+
+                inputMatricula.value =
+                boton.dataset.matricula;
+
+                document.querySelector(
+                '#form-empleado button[type="submit"]'
+                ).textContent = 'Guardar cambios';
 
                 // =============================
                 // OCULTAR DEMAS EMPLEADOS
