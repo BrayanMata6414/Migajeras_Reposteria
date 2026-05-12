@@ -13,7 +13,7 @@
 
     <div class="cont-opciones">
 
-        <div class="boton activo-boton">
+        <div class="boton activo-boton" id="btn-ventas">
 
             <h2>
                 Ventas del día:
@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="boton">
+        <div class="boton" id="btn-hacer-venta">
 
             <h2>
                 Hacer una venta
@@ -114,5 +114,301 @@
         {% endfor %}
 
     </div>
+
+    <div class="cont-vent">
+
+        <!-- CATEGORIAS -->
+
+        <div class="cont-cat">
+
+            <h2>
+                Categorías
+            </h2>
+
+            <div class="cat">
+
+                <h3>
+                    Todo
+                </h3>
+
+                <h3>
+                    Pastel
+                </h3>
+
+                <h3>
+                    Pan
+                </h3>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTOS -->
+
+        <div class="cont-produc-vent">
+
+            {% for producto in productos %}
+
+            <div class="tarjeta-prod">
+
+                <!-- NOMBRE -->
+
+                <h2>
+
+                    {{ producto.nombre }}
+
+                </h2>
+
+                <div class="cont-dato-prod">
+
+                    <!-- IMAGEN -->
+
+                    <div class="cont-img-pord">
+
+                        <img src="{{ url_for(
+                                'static',
+                                filename='img/jpg/' + producto.imagen
+                            ) }}" alt="producto">
+
+                    </div>
+
+                    <!-- CONTADOR -->
+
+                    <div class="cont-cant">
+
+                        <div class="cant" data-precio="{{ producto.precio }}">
+
+                            <!-- RESTAR -->
+
+                            <button type="button" class="btn-restar">
+
+                                -
+
+                            </button>
+
+                            <!-- CANTIDAD -->
+
+                            <p class="cantidad">
+
+                                0
+
+                            </p>
+
+                            <!-- SUMAR -->
+
+                            <button type="button" class="btn-sumar">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                        <!-- TOTAL -->
+
+                        <p class="precio-total">
+
+                            $0.00
+
+                        </p>
+
+                    </div>
+
+                    <!-- BOTON -->
+
+                    <button type="button" class="boton-aña">
+
+                        Añadir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+    
+    <script>
+
+        // =====================================
+        // ELEMENTOS
+        // =====================================
+
+        const btnVentas =
+            document.getElementById(
+                'btn-ventas'
+            );
+
+        const btnHacerVenta =
+            document.getElementById(
+                'btn-hacer-venta'
+            );
+
+        const contTick =
+            document.querySelector(
+                '.cont-tick'
+            );
+
+        const contVent =
+            document.querySelector(
+                '.cont-vent'
+            );
+
+        // =====================================
+        // MOSTRAR VENTAS
+        // =====================================
+
+        btnVentas.addEventListener('click', () => {
+
+            contTick.style.display = 'flex';
+
+            contVent.style.display = 'none';
+
+            btnVentas.classList.add(
+                'activo-boton'
+            );
+
+            btnHacerVenta.classList.remove(
+                'activo-boton'
+            );
+
+        });
+
+        // =====================================
+        // HACER VENTA
+        // =====================================
+
+        btnHacerVenta.addEventListener(
+            'click',
+            () => {
+
+                contTick.style.display = 'none';
+
+                contVent.style.display = 'flex';
+
+                btnHacerVenta.classList.add(
+                    'activo-boton'
+                );
+
+                btnVentas.classList.remove(
+                    'activo-boton'
+                );
+
+            }
+        );
+
+        // =====================================
+        // BOTONES +
+        // =====================================
+
+        const botonesSumar =
+            document.querySelectorAll(
+                '.btn-sumar'
+            );
+
+        botonesSumar.forEach((boton) => {
+
+            boton.addEventListener('click', () => {
+
+                const contenedor =
+                    boton.parentElement;
+
+                const textoCantidad =
+                    contenedor.querySelector(
+                        '.cantidad'
+                    );
+
+                const precioTexto =
+                    contenedor.parentElement
+                    .querySelector(
+                        '.precio-total'
+                    );
+
+                let cantidad =
+                    parseInt(
+                        textoCantidad.textContent
+                    );
+
+                const precio =
+                    parseFloat(
+                        contenedor.dataset.precio
+                    );
+
+                cantidad++;
+
+                textoCantidad.textContent =
+                    cantidad;
+
+                const total =
+                    cantidad * precio;
+
+                precioTexto.textContent =
+                    '$' + total.toFixed(2);
+
+            });
+
+        });
+
+        // =====================================
+        // BOTONES -
+        // =====================================
+
+        const botonesRestar =
+            document.querySelectorAll(
+                '.btn-restar'
+            );
+
+        botonesRestar.forEach((boton) => {
+
+            boton.addEventListener('click', () => {
+
+                const contenedor =
+                    boton.parentElement;
+
+                const textoCantidad =
+                    contenedor.querySelector(
+                        '.cantidad'
+                    );
+
+                const precioTexto =
+                    contenedor.parentElement
+                    .querySelector(
+                        '.precio-total'
+                    );
+
+                let cantidad =
+                    parseInt(
+                        textoCantidad.textContent
+                    );
+
+                const precio =
+                    parseFloat(
+                        contenedor.dataset.precio
+                    );
+
+                if (cantidad > 0) {
+
+                    cantidad--;
+
+                }
+
+                textoCantidad.textContent =
+                    cantidad;
+
+                const total =
+                    cantidad * precio;
+
+                precioTexto.textContent =
+                    '$' + total.toFixed(2);
+
+            });
+
+        });
+
+    </script>
 
 {% endblock %}
