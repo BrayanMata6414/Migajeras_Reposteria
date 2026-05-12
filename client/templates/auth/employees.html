@@ -1,71 +1,161 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleEmployees.css') }}">
+
 {% extends 'navbar.html' %}
 
 {% block title %}
 Empleados
 {% endblock %}
 
+{% block titulo %} Empleados {% endblock %}
+
 {% block content %}
 
-<h1>Registrar empleado</h1>
+    <div class="cont-tabla">
 
-<form method="POST">
+        <div class="tabla">
 
-    <input
-        type="text"
-        name="matricula"
-        placeholder="Matrícula"
-        required
-    >
+            {% for empleado in empleados %}
 
-    <input
-        type="text"
-        name="nombre"
-        placeholder="Nombre"
-        required
-    >
+                <div class="cont-dat">
 
-    <select name="puesto" required>
+                    <p>
+                        {{ empleado.matricula }}
+                    </p>
 
-        <option value="">
-            Selecciona un puesto
-        </option>
+                    <p>
+                        {{ empleado.nombre }}
+                    </p>
 
-        <option value="Administrador">
-            Administrador
-        </option>
+                    <p>
+                        {{ empleado.puesto }}
+                    </p>
 
-        <option value="Caja">
-            Caja
-        </option>
+                    <p>
+                        {{ empleado.correo }}
+                    </p>
 
-        <option value="Almacen">
-            Almacén
-        </option>
+                    <div class="cont-boton">
 
-        <option value="Cocina">
-            Cocina
-        </option>
+                        <button type="button">
+                            Editar
+                        </button>
 
-    </select>
+                        <button type="button">
+                            Borrar
+                        </button>
 
-    <input
-        type="email"
-        name="correo"
-        placeholder="Correo"
-        required
-    >
+                    </div>
 
-    <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        required
-    >
+                </div>
 
-    <button type="submit">
-        Registrar empleado
-    </button>
+            {% endfor %}
 
-</form>
+        </div>
+
+    </div>
+
+    <div class="cont-formEmp">
+
+        <form method="POST">
+
+            <!-- MATRICULA -->
+
+            <input
+                type="text"
+                name="matricula"
+                value="{{ matricula }}"
+                readonly
+            >
+
+            <!-- NOMBRE -->
+
+            <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                placeholder="Nombre"
+                required
+            >
+
+            <!-- PUESTO -->
+
+            <select name="puesto" required>
+
+                <option value="">
+                    Selecciona un puesto
+                </option>
+
+                <option value="Administrador">
+                    Administrador
+                </option>
+
+                <option value="Caja">
+                    Caja
+                </option>
+
+                <option value="Almacen">
+                    Almacén
+                </option>
+
+                <option value="Cocina">
+                    Cocina
+                </option>
+
+            </select>
+
+            <!-- CORREO -->
+
+            <input
+                type="email"
+                name="correo"
+                id="correo"
+                placeholder="Correo"
+                required
+            >
+
+            <!-- PASSWORD -->
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                required
+            >
+
+            <button type="submit">
+                Registrar empleado
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        const inputNombre =
+            document.getElementById('nombre');
+
+        const inputCorreo =
+            document.getElementById('correo');
+
+        inputNombre.addEventListener('input', () => {
+
+            const nombre =
+                inputNombre.value
+                .trim()
+                .split(' ')[0];
+
+            const anio =
+                new Date()
+                .getFullYear()
+                .toString()
+                .slice(-2);
+
+            inputCorreo.value =
+                `${nombre}${anio}@paloma.com`;
+
+        });
+
+    </script>
 
 {% endblock %}

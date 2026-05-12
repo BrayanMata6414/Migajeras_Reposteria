@@ -96,6 +96,59 @@ def obtener_empleado_por_correo(correo):
     return empleado
 
 # =========================================
+# OBTENER ULTIMO EMPLEADO
+# =========================================
+
+def obtener_ultimo_empleado():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(dictionary=True)
+
+    query = """
+        SELECT id_empleado
+        FROM empleados
+        ORDER BY id_empleado DESC
+        LIMIT 1
+    """
+
+    cursor.execute(query)
+
+    empleado = cursor.fetchone()
+
+    cursor.close()
+
+    conexion.close()
+
+    return empleado
+
+# =========================================
+# CONSULTA EMPLEADO
+# =========================================
+
+def obtener_empleados():
+
+    conexion = conectar()
+
+    cursor = conexion.cursor(dictionary=True)
+
+    query = """
+        SELECT *
+        FROM empleados
+        ORDER BY nombre ASC
+    """
+
+    cursor.execute(query)
+
+    empleados = cursor.fetchall()
+
+    cursor.close()
+
+    conexion.close()
+
+    return empleados
+
+# =========================================
 # OBTENER INGREDIENTES
 # =========================================
 

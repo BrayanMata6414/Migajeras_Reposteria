@@ -1,5 +1,7 @@
 import os
 
+from datetime import datetime
+
 from flask import (
     Flask,
     render_template,
@@ -17,6 +19,8 @@ from server.db import (
 
     agregar_empleado,
     obtener_empleado_por_correo,
+    obtener_empleados,
+    obtener_ultimo_empleado,
 
     obtener_ingredientes,
     obtener_distribuidores,
@@ -175,13 +179,29 @@ def employees():
     if session.get('puesto') != 'Administrador':
         return redirect(url_for('home'))
 
-    # ======================================
-    # AGREGAR EMPLEADO
-    # ======================================
+    # =========================================
+    # GENERAR MATRICULA
+    # =========================================
+
+    ultimo = obtener_ultimo_empleado()
+
+    if ultimo:
+
+        nuevo_id = ultimo['id_empleado'] + 1
+
+    else:
+
+        nuevo_id = 1
+
+    anio = datetime.now().strftime("%y")
+
+    matricula = f"{anio}{nuevo_id:04}"
+
+    # =========================================
+    # REGISTRAR EMPLEADO
+    # =========================================
 
     if request.method == 'POST':
-
-        matricula = request.form['matricula']
 
         nombre = request.form['nombre']
 
@@ -191,17 +211,9 @@ def employees():
 
         password = request.form['password']
 
-        # ==================================
-        # ENCRIPTAR PASSWORD
-        # ==================================
-
         password_hash = bcrypt.generate_password_hash(
             password
         ).decode('utf-8')
-
-        # ==================================
-        # GUARDAR EMPLEADO
-        # ==================================
 
         agregar_empleado(
             matricula,
@@ -211,9 +223,15 @@ def employees():
             password_hash
         )
 
+        return redirect(url_for('employees'))
+
+    empleados = obtener_empleados()
+
     return render_template(
         'auth/employees.html',
-        tipo_nav='empleado'
+        tipo_nav='empleado',
+        empleados=empleados,
+        matricula=matricula
     )
 
 # ==================================================

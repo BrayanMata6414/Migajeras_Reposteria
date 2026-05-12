@@ -1,17 +1,18 @@
 .cont-tabla .tabla
 {
-    width: 85%;
+    width: 90%;
     border-radius: 20px;
     background-color: var(--color-MistyRose);
     border: 5px solid var(--color-Sakura);
     padding: 30px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tabla .cont-dat
 {
-    width: 90%;
+    width: 95%;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -19,6 +20,8 @@
     border: 5px solid var(--color-Aloewood);
     border-radius: 50px;
     background-color: var(--color-Claro);
+
+    margin: 10px 0;
 }
 .tabla .cont-dat p
 {
@@ -55,5 +58,5 @@
 }
 .cont-formEmp form input, .cont-formEmp form select, .cont-formEmp form button
 {
-    height: 30px;
+    padding: 5px;
 }
