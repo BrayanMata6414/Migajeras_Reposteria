@@ -37,8 +37,8 @@
     width: 100%;
     height: 700px;
     padding: 30px;
-    display: flex;
     justify-content: center;
+    display: none;
 }
 
 .cont-cat
@@ -71,14 +71,113 @@
     color: var(--color-DarkChocolate);
     border: 5px solid var(--color-DarkChocolate);
     border-radius: 20px;
+    cursor: pointer;
+}
+.cont-cat h3:hover
+{
+    background-color: var(--color-Aloewood);
+    color: var(--color-Claro);
 }
 
 .cont-produc-vent
 {
-    width: 850px;
+    width: 940px;
+    padding: 30PX;
     background-color: var(--color-MistyRose);
     overflow-y: auto;
     border-radius: 0 0 10px 10px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.tarjeta-prod
+{
+    width: 270px;
+    height: 400px;
+    background-color: var(--color-Claro);
+    border-radius: 10PX;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+.tarjeta-prod h2
+{
+    padding: 5px;
+    color: var(--color-DarkChocolate);
+    font-family: "Cocogoose", sans-serif;
+    text-align: center;
+}
+
+.cont-dato-prod
+{
+    width: 90%;
+    height: 79%;
+    background-color: var(--color-Aloewood);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cont-img-pord
+{
+    width: 150px;
+    height: 120px;
+}
+
+.cont-cant
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cont-cant p, .cont-cant button
+{
+    font-size: 20px;
+    padding: 0 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
+}
+
+.cant p
+{
+    width: 40px;
+}
+.cont-cant button
+{
+    width: 30px;
+}
+
+.cont-cant .cant
+{
+    display: flex;
+    margin-right: 20px;
+}
+
+.cont-dato-prod .cont-img-pord img
+{ 
+    max-width: 100%;
+}
+
+.cont-dato-prod .boton-aña
+{
+    font-family: "Cocogoose", sans-serif;
+    font-size: 20px;
+    padding: 1px 10px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    color: var(--color-Claro);
+    background-color: var(--color-DarkChocolate);
+}
+.cont-dato-prod .boton-aña:hover
+{
+    background-color: var(--color-MilkTea);
 }

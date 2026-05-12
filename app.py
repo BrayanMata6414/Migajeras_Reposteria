@@ -287,10 +287,26 @@ def delete_employee(id_empleado):
 @login_required
 def sales():
 
+    # =====================================
+    # PRODUCTOS
+    # =====================================
+
+    productos = obtener_productos()
+
+    # =====================================
+    # CATEGORIAS
+    # =====================================
+
+    categorias = obtener_categorias()
+
+    # =====================================
+    # VENTAS
+    # =====================================
+
     ventas = obtener_ventas_hoy()
 
     # =====================================
-    # AGREGAR DETALLES A CADA VENTA
+    # DETALLES DE CADA VENTA
     # =====================================
 
     for venta in ventas:
@@ -301,6 +317,10 @@ def sales():
 
         venta['detalles'] = detalles
 
+    # =====================================
+    # TOTAL VENTAS
+    # =====================================
+
     total_ventas = len(ventas)
 
     return render_template(
@@ -308,6 +328,10 @@ def sales():
         'auth/sales.html',
 
         tipo_nav='empleado',
+
+        productos=productos,
+
+        categorias=categorias,
 
         ventas=ventas,
 

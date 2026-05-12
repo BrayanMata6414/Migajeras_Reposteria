@@ -298,5 +298,18 @@ VALUES
 (11, 'Docena de Cupcakes Personalizados', 'Caja con 12 cupcakes decorados según la temática solicitada.', 420.00, 12, 'docena_cupcakes_personalizados.jpg', 'disponible'),
 (11, 'Pastel de Cupcakes Personalizado', 'Arreglo de cupcakes diseñado en forma de pastel para eventos especiales.', 480.00, 7, 'pastel_cupcakes_personalizado.jpg', 'disponible');
 
+INSERT INTO ventas (total, fecha_venta, hora_venta, id_empleado)
+VALUES
+(420.00, '2026-05-01', '10:15:00', 1),
+(780.50, '2026-05-01', '12:30:00', 1),
+(350.00, '2026-05-02', '09:45:00', 1),
+(1120.00, '2026-05-02', '14:20:00', 1),
+(560.00, '2026-05-03', '11:10:00', 1),
+(920.75, '2026-05-04', '16:05:00', 1),
+(300.00, '2026-05-05', '09:00:00', 1),
+(1500.00, '2026-05-06', '18:40:00', 1),
+(670.25, '2026-05-07', '13:25:00', 1),
+(890.00, '2026-05-08', '19:10:00', 1);
+
 SELECT * FROM empleados;
 SELECT * FROM productos;
