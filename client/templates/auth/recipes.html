@@ -1,13 +1,144 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleRecipes.css') }}">
+<!--<link rel="stylesheet" href="styleRecipe.css">-->
+ 
 {% extends 'navbar.html' %}
-
+ 
 {% block title %}
     Recetas
 {% endblock %}
-
-{% block titulo %} Recetas {% endblock %}
-
+ 
+{% block titulo %}
+    Recetas
+{% endblock %}
+ 
 {% block content %}
-
-    <h1>El ingredientes secreto es...... Nada</h1>
-
+ 
+<div class="recetas-container">
+ 
+    <!-- BUSQUEDA -->
+    <div class="busqueda-container">
+ 
+        <div class="input-busqueda">
+ 
+            <input type="text" placeholder="Buscar receta...">
+ 
+            <span>⌕</span>
+ 
+        </div>
+ 
+        <select>
+ 
+            <option>Categoria</option>
+            <option>Pasteles</option>
+            <option>Pays</option>
+            <option>Galletas</option>
+ 
+        </select>
+ 
+        <button>Buscar</button>
+ 
+    </div>
+ 
+    <!-- TARJETAS -->
+    <div class="recetas-grid" id="gridRecetas">
+ 
+        <div class="tarjeta" onclick="mostrarReceta()">
+ 
+            <img src="{{ url_for('static', filename='img/jpg/redvelvet.png') }}">
+ 
+            <h2>Pastel Red Velvet</h2>
+ 
+        </div>
+ 
+        <div class="tarjeta" onclick="mostrarReceta()">
+ 
+            <img src="{{ url_for('static', filename='img/jpg/redvelvet.png') }}">
+ 
+            <h2>Pastel Red Velvet</h2>
+ 
+        </div>
+ 
+        <div class="tarjeta" onclick="mostrarReceta()">
+ 
+            <img src="{{ url_for('static', filename='img/jpg/redvelvet.png') }}">
+ 
+            <h2>Pastel Red Velvet</h2>
+ 
+        </div>
+ 
+        <div class="tarjeta" onclick="mostrarReceta()">
+ 
+            <img src="{{ url_for('static', filename='img/jpg/redvelvet.png') }}">
+ 
+            <h2>Pastel Red Velvet</h2>
+ 
+        </div>
+ 
+    </div>
+ 
+    <!-- DETALLE RECETA -->
+    <div class="detalle-receta" id="detalleReceta">
+ 
+        <img src="{{ url_for('static', filename='img/jpg/redvelvet.png') }}">
+ 
+        <div class="info-receta">
+ 
+            <h2>Pastel Red Velvet</h2>
+ 
+            <p class="subtitulo">Descripción</p>
+ 
+            <p>
+                El pastel Red Velvet es un bizcocho suave,
+                esponjoso y húmedo, caracterizado por su
+                distintivo color rojo y un ligero sabor
+                a cacao con notas ácidas.
+            </p>
+ 
+            <p>
+                Su textura delicada se complementa con un
+                betún de queso crema, logrando un equilibrio
+                perfecto entre dulzura y frescura.
+            </p>
+ 
+            <p class="subtitulo">Ingredientes</p>
+ 
+            <ul>
+ 
+                <li>2 ½ tazas de harina de trigo</li>
+                <li>1 ½ tazas de azúcar</li>
+                <li>1 cucharadita de bicarbonato de sodio</li>
+                <li>1 cucharadita de sal</li>
+                <li>1 taza de buttermilk</li>
+                <li>2 huevos</li>
+ 
+            </ul>
+ 
+            <button onclick="cerrarReceta()">
+                Volver
+            </button>
+ 
+        </div>
+ 
+    </div>
+ 
+</div>
+ 
+<script>
+ 
+function mostrarReceta() {
+ 
+    document.getElementById("gridRecetas").style.display = "none";
+ 
+    document.getElementById("detalleReceta").style.display = "flex";
+}
+ 
+function cerrarReceta() {
+ 
+    document.getElementById("detalleReceta").style.display = "none";
+ 
+    document.getElementById("gridRecetas").style.display = "grid";
+}
+ 
+</script>
+ 
 {% endblock %}
