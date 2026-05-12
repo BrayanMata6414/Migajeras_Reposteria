@@ -69,6 +69,28 @@ def agregar_empleado(
     cursor.close()
     conexion.close()
 
+# =========================================
+# ELIMINAR EMPLEADO
+# =========================================
+
+def eliminar_empleado(id_empleado):
+
+    conexion = conectar()
+
+    cursor = conexion.cursor()
+
+    query = """
+        DELETE FROM empleados
+        WHERE id_empleado = %s
+    """
+
+    cursor.execute(query, (id_empleado,))
+
+    conexion.commit()
+
+    cursor.close()
+
+    conexion.close()
 
 # =========================================
 # OBTENER EMPLEADO POR CORREO

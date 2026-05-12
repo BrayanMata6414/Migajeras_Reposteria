@@ -18,6 +18,7 @@ from werkzeug.utils import secure_filename
 from server.db import (
 
     agregar_empleado,
+    eliminar_empleado,
     obtener_empleado_por_correo,
     obtener_empleados,
     obtener_ultimo_empleado,
@@ -233,6 +234,26 @@ def employees():
         empleados=empleados,
         matricula=matricula
     )
+
+# ==================================================
+# ELIMINAR EMPLEADO
+# ==================================================
+
+@app.route('/delete_employee/<int:id_empleado>', methods=['POST'])
+@login_required
+def delete_employee(id_empleado):
+
+    # SOLO ADMINISTRADOR
+    if session.get('puesto') != 'Administrador':
+        return redirect(url_for('home'))
+
+    # EVITAR BORRARSE A SI MISMO
+    if id_empleado == session.get('id_empleado'):
+        return redirect(url_for('employees'))
+
+    eliminar_empleado(id_empleado)
+
+    return redirect(url_for('employees'))
 
 # ==================================================
 # VENTAS

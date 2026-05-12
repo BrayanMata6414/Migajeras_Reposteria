@@ -16,37 +16,47 @@ Empleados
 
             {% for empleado in empleados %}
 
-                <div class="cont-dat">
+                {% if empleado.id_empleado != session.id_empleado %}
 
-                    <p>
-                        {{ empleado.matricula }}
-                    </p>
+                    <div class="cont-dat" data-id="{{ empleado.id_empleado }}">
 
-                    <p>
-                        {{ empleado.nombre }}
-                    </p>
+                        <p>
+                            {{ empleado.matricula }}
+                        </p>
 
-                    <p>
-                        {{ empleado.puesto }}
-                    </p>
+                        <p>
+                            {{ empleado.nombre }}
+                        </p>
 
-                    <p>
-                        {{ empleado.correo }}
-                    </p>
+                        <p>
+                            {{ empleado.puesto }}
+                        </p>
 
-                    <div class="cont-boton">
+                        <p>
+                            {{ empleado.correo }}
+                        </p>
 
-                        <button type="button">
-                            Editar
-                        </button>
+                        <div class="cont-boton">
 
-                        <button type="button">
-                            Borrar
-                        </button>
+                            <button type="button" class="btn-editar" data-id="{{ empleado.id_empleado }}"
+                                data-nombre="{{ empleado.nombre }}" data-puesto="{{ empleado.puesto }}"
+                                data-correo="{{ empleado.correo }}">
+                                Editar
+                            </button>
+
+                            <form action="/delete_employee/{{ empleado.id_empleado }}" method="POST">
+
+                                <button type="submit">
+                                    Borrar
+                                </button>
+
+                            </form>
+
+                        </div>
 
                     </div>
 
-                </div>
+                {% endif %}
 
             {% endfor %}
 
@@ -56,7 +66,7 @@ Empleados
 
     <div class="cont-formEmp">
 
-        <form method="POST">
+        <form method="POST" id="form-empleado">
 
             <!-- MATRICULA -->
 
@@ -69,17 +79,11 @@ Empleados
 
             <!-- NOMBRE -->
 
-            <input
-                type="text"
-                name="nombre"
-                id="nombre"
-                placeholder="Nombre"
-                required
-            >
+            <input type="text" name="nombre" id="input-nombre" placeholder="Nombre" required>
 
             <!-- PUESTO -->
 
-            <select name="puesto" required>
+            <select name="puesto" id="input-puesto" required>
 
                 <option value="">
                     Selecciona un puesto
@@ -104,14 +108,7 @@ Empleados
             </select>
 
             <!-- CORREO -->
-
-            <input
-                type="email"
-                name="correo"
-                id="correo"
-                placeholder="Correo"
-                required
-            >
+            <input type="email" name="correo" id="input-correo" placeholder="Correo" required>
 
             <!-- PASSWORD -->
 
@@ -133,10 +130,23 @@ Empleados
     <script>
 
         const inputNombre =
-            document.getElementById('nombre');
+            document.getElementById('input-nombre');
 
         const inputCorreo =
-            document.getElementById('correo');
+            document.getElementById('input-correo');
+
+        const inputPuesto =
+            document.getElementById('input-puesto');
+
+        const botonesEditar =
+            document.querySelectorAll('.btn-editar');
+
+        const empleados =
+            document.querySelectorAll('.cont-dat');
+
+        // =====================================
+        // GENERAR CORREO AUTOMATICO
+        // =====================================
 
         inputNombre.addEventListener('input', () => {
 
@@ -153,6 +163,81 @@ Empleados
 
             inputCorreo.value =
                 `${nombre}${anio}@paloma.com`;
+
+        });
+
+        // =====================================
+        // EDITAR EMPLEADO
+        // =====================================
+
+        botonesEditar.forEach((boton) => {
+
+            boton.addEventListener('click', () => {
+
+                // =============================
+                // LLENAR FORMULARIO
+                // =============================
+
+                inputNombre.value =
+                    boton.dataset.nombre;
+
+                inputPuesto.value =
+                    boton.dataset.puesto;
+
+                inputCorreo.value =
+                    boton.dataset.correo;
+
+                // =============================
+                // OCULTAR DEMAS EMPLEADOS
+                // =============================
+
+                empleados.forEach((empleado) => {
+
+                    if (
+                        empleado.dataset.id !==
+                        boton.dataset.id
+                    ) {
+
+                        empleado.style.display =
+                            'none';
+
+                    }
+
+                });
+
+                // =============================
+                // CAMBIAR BOTONES
+                // =============================
+
+                const contBotones =
+                    boton.parentElement;
+
+                contBotones.innerHTML = `
+
+                    <button
+                        type="button"
+                        class="btn-cancelar"
+                    >
+
+                        Cancelar
+
+                    </button>
+
+                `;
+
+                // =============================
+                // BOTON CANCELAR
+                // =============================
+
+                document
+                    .querySelector('.btn-cancelar')
+                    .addEventListener('click', () => {
+
+                        location.reload();
+
+                    });
+
+            });
 
         });
 
