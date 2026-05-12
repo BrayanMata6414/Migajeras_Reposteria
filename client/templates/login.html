@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleForm.css') }}">
+
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -6,29 +8,31 @@ Iniciar sesión
 
 {% block content %}
 
-<h1>Iniciar sesión</h1>
 
-<form method="POST">
+<div class="cont-form activo">
 
-    <input
-        type="email"
-        name="correo"
-        placeholder="Correo"
-        required
-    >
+    <form method="POST">
 
-    <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        required
-    >
+        <h2>Iniciar sesión</h2>
 
-    <button type="submit">
-        Ingresar
-    </button>
+        <div class="input-group">
 
-</form>
+            <input type="email" name="correo" placeholder="Correo" required>
+
+        </div>
+
+        <div class="input-group">
+
+            <input type="password" name="password" placeholder="Contraseña" required>
+
+        </div>
+        
+        <button type="submit" class="btn-sub">
+            Ingresar
+        </button>
+
+    </form>
+</div>
 
 {% if error %}
     <p>{{ error }}</p>
