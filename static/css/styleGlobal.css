@@ -25,6 +25,7 @@ body
 {
     background-color: var(--color-Claro);
     letter-spacing: 2px;
+    overflow-x: hidden;
 }
 
 nav
@@ -87,4 +88,68 @@ nav
     font-family: "Cocogoose", sans-serif;
     color: var(--color-DarkChocolate);
     text-align: center;
+}
+
+/* ── FOOTER ── */
+footer {
+    background-color: var(--color-DarkChocolate);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.footer-social {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+.footer-social a {
+    color: var(--color-Claro);
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+.footer-social a:hover {
+    color: var(--color-Sakura);
+}
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.footer-brand img {
+    height: 60px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+}
+.footer-links a {
+    color: var(--color-Claro);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: var(--color-Sakura);
+}
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    color: var(--color-MilkTea);
+    font-size: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+.footer-bottom a {
+    color: var(--color-Sakura);
 }
