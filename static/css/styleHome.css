@@ -1,0 +1,292 @@
+
+.q-small,
+.q-big,
+.offerings h2,
+.visita-left h2,
+.hero-logo h1 {
+    font-family: "Cocogoose", sans-serif;
+}
+
+
+/* ── HERO ── */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 900px;
+    background: url('../img/jpg/BannerIMG.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(68,48,37,0.80) 0%,
+        rgba(68,48,37,0.50) 70%,
+        var(--color-Claro) 100%);
+}
+.hero-logo {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 25vw;
+}
+
+.hero-logo img {
+    width: clamp(400px, 65vw, 900px);
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+.hero-bird {
+    position: absolute;
+    top: 90px;
+    left: -200px;
+    width: clamp(1000px, 38vw, 500px);
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(4px 8px 16px rgba(68,48,37,0.25));
+}
+
+.hero-croissant {
+    position: absolute;
+    top: 420px;
+    right: -180px;
+    width: clamp(850px, 22vw, 320px);
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(4px 8px 16px rgba(68,48,37,0.25));
+}
+
+/* ── QUOTE ── */
+.quote-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 80px auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+}
+.quote-bread {
+    position: absolute;
+    left: -600px;
+    top: 120%;
+    transform: translateY(-50%) rotate(-15deg);
+    width: clamp(850px, 22vw, 320px);
+    pointer-events: none;
+    filter: drop-shadow(2px 6px 12px rgba(68,48,37,0.20));
+}
+.quote-text { flex: 1;
+    padding-right: 10%; }
+
+.q-left  { text-align: left;  margin: 0; }
+.q-right { text-align: right; margin: 0; padding-right: 20%;}
+.q-right-pan { text-align: right; margin: 0; padding-left: 1%;}
+
+.q-small {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 500;
+    color: var(--color-DarkChocolate);
+    line-height: 2;
+    margin: 0;
+}
+
+.q-big {
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 900;
+    color: var(--color-DarkChocolate);
+    line-height: 1;
+    margin: 0;
+}
+
+.q-big-pan {
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 900;
+    color: var(--color-DarkChocolate);
+    line-height: 0.5;
+    margin: 0;
+}
+
+.quote-img {
+    flex: 1;
+    max-width: 600px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(68,48,37,0.18);
+}
+
+.quote-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── QUÉ OFRECEMOS ── */
+.offerings {
+    padding: 60px 20px;
+    text-align: center;
+}
+.offerings h2 {
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 900;
+    color: var(--color-DarkChocolate);
+    margin-bottom: 48px;
+}
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+.card {
+    background-color: var(--color-MistyRose);
+    border-radius: 24px;
+    padding: 28px 24px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(68,48,37,0.10);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(68,48,37,0.18);
+}
+.card-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(2px 4px 8px rgba(68,48,37,0.18));
+}
+.card h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--color-DarkChocolate);
+    margin-bottom: 10px;
+}
+.card p {
+    font-size: 13px;
+    color: var(--color-Aloewood);
+    line-height: 1.55;
+}
+.btn-conoce {
+    display: inline-block;
+    padding: 14px 44px;
+    background-color: var(--color-Sakura);
+    color: var(--color-Claro);
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(236,156,157,0.40);
+    transition: background-color 0.2s, transform 0.2s;
+}
+.btn-conoce:hover {
+    background-color: var(--color-MilkTea);
+    transform: scale(1.04);
+}
+
+/* ── VISÍTANOS ── */
+.visita {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    flex-wrap: wrap;
+    position: relative;
+}
+.visita-donut {
+    position: absolute;
+    right: -600px;
+    top: -200px;
+    width: clamp(900px, 22vw, 320px);
+    pointer-events: none;
+    filter: drop-shadow(4px 8px 16px rgba(236,156,157,0.35));
+    transform: rotate(-8deg);
+}
+.visita-left { flex: 1; min-width: 260px; }
+.visita-left h2 {
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 900;
+    color: var(--color-DarkChocolate);
+    margin-bottom: 24px;
+}
+.map-placeholder {
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(68,48,37,0.15);
+}
+.map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.visita-right {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 70px;
+}
+.contact-item { display: flex; align-items: center; gap: 14px; }
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-Sakura);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+.contact-icon-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+.contact-item p {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-DarkChocolate);
+    line-height: 1.4;
+}
+.contact-item span {
+    font-weight: 400;
+    color: var(--color-Aloewood);
+}
+
+
+/* ── MASCOT BANNER ── */
+.mascot-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px 20px 0;
+    background: linear-gradient(to bottom, var(--color-Claro), var(--color-MistyRose));
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.mascot-bird-face {
+    width: clamp(260px, 40vw, 480px);
+    display: block;
+    filter: drop-shadow(0 -8px 24px rgba(68,48,37,0.12));
+    margin: 0 auto;
+    margin-left: 38%;
+}
+

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleHome.css') }}">
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -6,6 +7,108 @@
 
 {% block content %}
 
-    <h1>Bienvenido</h1>
+        <!-- HERO -->
+    <section class="hero">
+        <img class="hero-bird"
+             src="../../static/img/png/Vectorizacion_Migajera-01-01.png"
+             alt="Paloma chef Migajera">
+        <div class="hero-logo">
+            <img src="../../static/img/png/letramigajera-01.png" alt="migajera Repostería">
+        </div>
+        <img class="hero-croissant"
+             src="../../static/img/png/Assets_Pancitos-01.png"
+             alt="">
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+        <img class="quote-bread"
+             src="../../static/img/png/Assets_Pancitos-02.png"
+             alt="">
+        <div class="quote-text">
+            <p class="q-left q-small">"De migaja en</p>
+            <p class="q-left q-big">migaja</p>
+            <p class="q-right q-small" style="margin-left: -10px;">se hace el</p>
+            <p class="q-right-pan q-big-pan" style="padding-left: 20%;">pan"</p>
+        </div>
+        <div class="quote-img">
+            <img src="../../static/img/png/foto-panadero.png"
+                 alt="Panadero haciendo pan">
+        </div>
+    </section>
+
+    <!-- QUÉ OFRECEMOS -->
+    <section class="offerings">
+        <h2>¿Qué ofrecemos?</h2>
+        <div class="cards-container">
+            <div class="card">
+                <img class="card-img" src="../../static/img/png/Assets_Pancitos-08.png" alt="Panadería">
+                <h3>Panadería</h3>
+                <p>Tenemos una amplia variedad de panadería dulce que puedes llevarte al momento.</p>
+            </div>
+            <div class="card">
+                <img class="card-img" src="../../static/img/png/Assets_Pancitos-06.png" alt="Pastelería">
+                <h3>Pastelería</h3>
+                <p>Contamos con pasteles por rebanada o completo, listos para toda ocasión.</p>
+            </div>
+            <div class="card">
+                <img class="card-img" src="../../static/img/png/Assets_Pancitos-07.png" alt="Pedidos personalizados">
+                <h3>Sobre pedido</h3>
+                <p>Puedes realizar un pedido personalizado de alguno de nuestros productos.</p>
+            </div>
+        </div>
+        <a href="menu.html" class="btn-conoce">Conoce más</a>
+    </section>
+
+    <!-- VISÍTANOS -->
+    <section class="visita">
+        <img class="visita-donut"
+             src="../../static/img/png/Assets_Pancitos-03.png"
+             alt="">
+        <div class="visita-left">
+            <h2>¡Visítanos!</h2>
+            <div class="map-placeholder">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.8!2d-106.4245!3d31.6904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDQxJzI1LjQiTiAxMDbCsDI1JzI4LjIiVw!5e0!3m2!1ses!2smx!4v1234567890"
+                    allowfullscreen="" loading="lazy" title="Ubicación Migajera">
+                </iframe>
+            </div>
+        </div>
+        <div class="visita-right">
+            <div class="contact-item">
+                <img class="contact-icon-img" src="../../static/img/png/spot_icon.png" alt="Ubicación">
+                <p>Sucursal Norte<br><span>Calle 123, Colonia Nada</span></p>
+            </div>
+            <div class="contact-item">
+                <img class="contact-icon-img" src="../../static/img/png/phone_icon.png" alt="Teléfono">
+                <p><span>(656) 000-0000</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MASCOT BANNER -->
+    <div class="mascot-banner">
+        <img class="mascot-bird-face"
+             src="../../static/img/png/Vectorizacion_Migajera-02-01-01.png"
+             alt="¡Migajas!">
+    </div>
+
+        <!-- FOOTER -->
+    <footer>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+        </div>
+        <div class="footer-brand">
+            <img src="../../static/img/png/MigajeraLogo_Completo_SinColor-01.png" alt="Migajera Repostería">
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="about.html">Nosotros</a>
+        </div>
+        <p class="footer-bottom">¿Eres empleado? <a href="#">Inicia sesión</a></p>
+    </footer>
+
 
 {% endblock %}
