@@ -4,66 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/styleGlobal.css">
-    <link rel="stylesheet" href="/static/css/styleEmployees.css">
+    <link rel="stylesheet" href="/static/css/styleVentas.css">
+    <link rel="stylesheet" href="/static/css/styleTickets.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div class="cont-tabla">
-        <div class="tabla">
-            <div class="cont-dat">
-                <p>matricula</p>
-                <p>nombre</p>
-                <p>puesto</p>
-                <p>correo</p>
+    <h1>nose</h1>
 
-                <div class="cont-boton">
-                    <button type="submit">editar</button>
-                    <button type="submit">borrar</button>
-                </div>
-                
-            </div>
+    <div class="cont-opciones">
+        <div class="boton activo">
+            <h2>Ventas del dia: 0</h2>
         </div>
+
+        <div class="boton">
+            <h2>Hacer una venta</h2>
+        </div>
+
     </div>
 
-    <div class="cont-formEmp">
-        <form method="POST">
+    <div class="cont-tick">
+        <div class="ticket">
+            <h2>Ticket #0</h2>
 
-            <input type="text" name="nombre" placeholder="Nombre" required>
+            <div class="cont-datos">
+                <div class="cont-com">
+                    <div class="com">
+                        <p>1 Pan</p>
+                        <p>$50</p>
 
-            <select name="puesto" required>
+                    </div>
 
-                <option value="">
-                    Selecciona un puesto
-                </option>
+                    <div class="com">
+                        <p>3 Pasteles</p>
+                        <p>$250</p>
+                        
+                    </div>
 
-                <option value="Administrador">
-                    Administrador
-                </option>
+                </div>
 
-                <option value="Caja">
-                    Caja
-                </option>
+                <div class="cont-total">
+                    <h3>Total</h3>
+                    <h3>$300</h3>
+                </div>
 
-                <option value="Almacen">
-                    Almacén
-                </option>
+                <div class="cont-fecha">
+                    <p>Fecha: </p>
+                    <p>Hora: </p>
+                </div>
+            </div>
 
-                <option value="Cocina">
-                    Cocina
-                </option>
+        </div>
 
-            </select>
-
-            <input type="email" name="correo" placeholder="Correo" required>
-
-            <input type="password" name="password" placeholder="Contraseña" required>
-
-            <button type="submit">
-                Registrar empleado
-            </button>
-
-        </form>
     </div>
 
 </body>

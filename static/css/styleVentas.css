@@ -1,0 +1,33 @@
+.cont-opciones
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cont-opciones .boton
+{
+    color: var(--color-DarkChocolate);
+    padding: 10px;
+    border-radius: 50px;
+}
+.cont-opciones .boton:hover
+{
+    background-color: var(--color-MilkTea);
+    cursor: pointer;
+}
+
+.activo
+{
+    background-color: var(--color-DarkChocolate);
+    
+}
+.cont-opciones .activo:hover
+{
+    background-color: var(--color-DarkChocolate);
+    cursor: default;
+}
+.activo h2
+{
+    color: var(--color-Claro);
+}
