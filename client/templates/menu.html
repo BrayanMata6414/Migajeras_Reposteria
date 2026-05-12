@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleMenu.css') }}">
 {% extends 'navbar.html' %}
 
 {% block title %}
@@ -6,6 +7,418 @@
 
 {% block content %}
 
-    <h1>Bienvenido X2</h1>
+    <!-- ══ HERO MENÚ ══ -->
+    <section class="menu-hero">
+        <div class="menu-hero-panes">
+            <img src="../../static/img/png/Panes-Menu-01.png" alt="Panes decorativos">
+        </div>
+        <div class="menu-hero-text">
+            <img src="../../static/img/png/Introduccion-Menu.png" alt="menú – Si vas a migajear que sea de nuestro PAN">
+        </div>
+    </section>
+
+    <!-- ══ FILTROS ══ -->
+    <section class="menu-filtros">
+        <button class="filtro-btn activo" data-filter="todo">TODO</button>
+        <button class="filtro-btn" data-filter="panaderia">Panadería</button>
+        <button class="filtro-btn" data-filter="pasteleria">Pastelería</button>
+        <button class="filtro-btn" data-filter="pedidos">Pedidos</button>
+    </section>
+
+    <!-- ══ GRID DE PRODUCTOS ══ -->
+    <section class="menu-grid-section">
+        <div class="menu-grid" id="menuGrid">
+
+            <!-- PANADERÍA -->
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/conchas_vainilla.png" alt="Conchas de vainilla">
+                </div>
+                <h3>Conchas<br><span>de vainilla</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/roles_canela.png" alt="Roles de canela">
+                </div>
+                <h3>Roles<br><span>de canela</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pan_elote.png" alt="Pan de elote">
+                </div>
+                <h3>Pan<br><span>de elote</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cuernitos_mantequilla.png" alt="Cuernitos de mantequilla">
+                </div>
+                <h3>Cuernitos<br><span>de mantequilla</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/donas_glaseadas.png" alt="Donas glaseadas">
+                </div>
+                <h3>Donas<br><span>glaseadas</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/orejas_hojaldre.png" alt="Orejas de hojaldre">
+                </div>
+                <h3>Orejas<br><span>de hojaldre</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/bolillo_artesanal.png" alt="Bolillo artesanal">
+                </div>
+                <h3>Bolillo<br><span>artesanal</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/rosca_canela.png" alt="Rosca de canela glaseada">
+                </div>
+                <h3>Rosca de canela<br><span>glaseada</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/rosca_reyes.png" alt="Rosca de Reyes">
+                </div>
+                <h3>Rosca<br><span>de Reyes</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="panaderia">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pan_muerto.png" alt="Pan de muerto">
+                </div>
+                <h3>Pan<br><span>de muerto</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <!-- PASTELERÍA -->
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_red_velvet.png" alt="Pastel Red Velvet">
+                </div>
+                <h3>Pastel<br><span>Red Velvet</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_chocolate_belga.png" alt="Pastel de Chocolate Belga">
+                </div>
+                <h3>Pastel de<br><span>Chocolate Belga</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_tres_leches.png" alt="Pastel de Tres Leches">
+                </div>
+                <h3>Pastel de<br><span>Tres Leches</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_fresas_crema.png" alt="Pastel de Fresas con Crema">
+                </div>
+                <h3>Pastel de<br><span>Fresas con Crema</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/galletas_chispas.png" alt="Galletas de chispas de chocolate">
+                </div>
+                <h3>Galletas<br><span>chispas de chocolate</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/galletas_decoradas.png" alt="Galletas decoradas de vainilla">
+                </div>
+                <h3>Galletas decoradas<br><span>de vainilla</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/galletas_avena_nuez.png" alt="Galletas de avena y nuez">
+                </div>
+                <h3>Galletas<br><span>de avena y nuez</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/galletas_cajeta.png" alt="Galletas rellenas de cajeta">
+                </div>
+                <h3>Galletas rellenas<br><span>de cajeta</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cupcake_chocolate.png" alt="Cupcake de chocolate">
+                </div>
+                <h3>Cupcake<br><span>de chocolate</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cupcake_vainilla_fresa.png" alt="Cupcake de vainilla con fresa">
+                </div>
+                <h3>Cupcake<br><span>vainilla con fresa</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cupcake_red_velvet.png" alt="Cupcake Red Velvet">
+                </div>
+                <h3>Cupcake<br><span>Red Velvet</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cupcake_limon.png" alt="Cupcake de limón">
+                </div>
+                <h3>Cupcake<br><span>de limón</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cheesecake_frutos_rojos.png" alt="Cheesecake de frutos rojos">
+                </div>
+                <h3>Cheesecake<br><span>de frutos rojos</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/tiramisu_artesanal.png" alt="Tiramisú artesanal">
+                </div>
+                <h3>Tiramisú<br><span>artesanal</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/mousse_chocolate.png" alt="Mousse de chocolate">
+                </div>
+                <h3>Mousse<br><span>de chocolate</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/carlota_limon.png" alt="Carlota de limón">
+                </div>
+                <h3>Carlota<br><span>de limón</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/cafe_latte.png" alt="Café latte">
+                </div>
+                <h3>Café<br><span>latte</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/chocolate_caliente.png" alt="Chocolate caliente">
+                </div>
+                <h3>Chocolate<br><span>caliente</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/frappe_moka.png" alt="Frappé de moka">
+                </div>
+                <h3>Frappé<br><span>de moka</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/te_chai_helado.png" alt="Té chai helado">
+                </div>
+                <h3>Té chai<br><span>helado</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/gelatina_mosaico.png" alt="Gelatina mosaico">
+                </div>
+                <h3>Gelatina<br><span>mosaico</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/gelatina_fresa_crema.png" alt="Gelatina de fresa con crema">
+                </div>
+                <h3>Gelatina de fresa<br><span>con crema</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pay_limon.png" alt="Pay de limón">
+                </div>
+                <h3>Pay<br><span>de limón</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pasteleria">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pay_nuez.png" alt="Pay de nuez">
+                </div>
+                <h3>Pay<br><span>de nuez</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <!-- PEDIDOS PERSONALIZADOS -->
+            <div class="producto-card" data-categoria="pedidos">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_pequeno_personalizado.png" alt="Pastel pequeño personalizado">
+                </div>
+                <h3>Pastel pequeño<br><span>personalizado</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pedidos">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_mediano_personalizado.png" alt="Pastel mediano personalizado">
+                </div>
+                <h3>Pastel mediano<br><span>personalizado</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pedidos">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_grande_personalizado.png" alt="Pastel grande personalizado">
+                </div>
+                <h3>Pastel grande<br><span>personalizado</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pedidos">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/docena_cupcakes_personalizados.png" alt="Docena de cupcakes personalizados">
+                </div>
+                <h3>Docena de cupcakes<br><span>personalizados</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+            <div class="producto-card" data-categoria="pedidos">
+                <div class="producto-img-wrap">
+                    <img src="../../static/img/png/pastel_cupcakes_personalizado.png" alt="Pastel de cupcakes personalizado">
+                </div>
+                <h3>Pastel de cupcakes<br><span>personalizado</span></h3>
+                <button class="btn-ver">Ver más</button>
+            </div>
+
+        </div>
+
+        <!-- BOTÓN CARGAR MÁS -->
+        <div class="cargar-mas-wrap">
+            <button class="btn-cargar" id="btnCargar">Cargar más...</button>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">ig</a>
+        </div>
+        <div class="footer-brand">
+            <img src="../../static/img/png/MigajeraLogo_Completo_SinColor-01.png" alt="Migajera Repostería">
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="about.html">Nosotros</a>
+        </div>
+        <p class="footer-bottom">¿Eres empleado? <a href="#">Inicia sesión</a></p>
+    </footer>
+
+    <script>
+        // ── FILTROS ──
+        const filtros = document.querySelectorAll('.filtro-btn');
+        const cards   = document.querySelectorAll('.producto-card');
+        const btnCargar = document.getElementById('btnCargar');
+
+        const ITEMS_POR_PAGINA = 6;
+        let filtroActual = 'todo';
+        let visiblesActuales = ITEMS_POR_PAGINA;
+
+        function getCardsFiltradas() {
+            return Array.from(cards).filter(c =>
+                filtroActual === 'todo' || c.dataset.categoria === filtroActual
+            );
+        }
+
+        function renderCards() {
+            const filtradas = getCardsFiltradas();
+            cards.forEach(c => {
+                c.classList.remove('visible');
+                c.style.display = 'none';
+            });
+            filtradas.forEach((c, i) => {
+                if (i < visiblesActuales) {
+                    c.style.display = '';
+                    // pequeña animación al aparecer
+                    setTimeout(() => c.classList.add('visible'), i * 40);
+                }
+            });
+            btnCargar.style.display = filtradas.length > visiblesActuales ? '' : 'none';
+        }
+
+        filtros.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filtros.forEach(b => b.classList.remove('activo'));
+                btn.classList.add('activo');
+                filtroActual = btn.dataset.filter;
+                visiblesActuales = ITEMS_POR_PAGINA;
+                renderCards();
+            });
+        });
+
+        btnCargar.addEventListener('click', () => {
+            visiblesActuales += ITEMS_POR_PAGINA;
+            renderCards();
+        });
+
+        // Inicializar
+        renderCards();
+    </script>
+
 
 {% endblock %}
