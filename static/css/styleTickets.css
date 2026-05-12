@@ -1,0 +1,62 @@
+.cont-tick
+{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.ticket
+{
+    width: 280px;
+    height: 380px;
+    background-color: var(--color-MistyRose);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.ticket h2
+{
+    color: var(--color-DarkChocolate);
+    font-size: 30px;
+    padding: 5px;
+}
+
+.ticket .cont-datos
+{
+    width: 90%;
+    height: 320px;
+    padding: 5px;
+    background-color: var(--color-MilkTea);
+    color: var(--color-Claro);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cont-com
+{
+    width: 100%;
+    height: 210px;
+    overflow-y: auto;
+}
+
+.com 
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.cont-total
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
