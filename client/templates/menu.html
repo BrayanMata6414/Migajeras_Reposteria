@@ -6,8 +6,6 @@
 {% endblock %}
 
 {% block content %}
-
-    <!-- ══ HERO MENÚ ══ -->
     <section class="menu-hero">
         <div class="menu-hero-panes">
             <img src="../../static/img/png/Panes-Menu-01.png" alt="Panes decorativos">
@@ -17,7 +15,6 @@
         </div>
     </section>
 
-    <!-- ══ FILTROS ══ -->
     <section class="menu-filtros">
         <button class="filtro-btn activo" data-filter="todo">TODO</button>
         <button class="filtro-btn" data-filter="panaderia">Panadería</button>
@@ -25,7 +22,6 @@
         <button class="filtro-btn" data-filter="pedidos">Pedidos</button>
     </section>
 
-    <!-- ══ GRID DE PRODUCTOS ══ -->
     <section class="menu-grid-section">
         <div class="menu-grid" id="menuGrid">
 
@@ -346,13 +342,24 @@
 
         </div>
 
-        <!-- BOTÓN CARGAR MÁS -->
         <div class="cargar-mas-wrap">
             <button class="btn-cargar" id="btnCargar">Cargar más...</button>
         </div>
     </section>
 
-    <!-- ══ FOOTER ══ -->
+    <div class="tarjetaProducto-overlay" id="tarjetaProductoOverlay">
+        <div class="tarjetaProducto-card" id="tarjetaProductoCard">
+            <button class="tarjetaProducto-close" id="tarjetaProductoClose">✕</button>
+            <div class="tarjetaProducto-img-wrap">
+                <img id="tarjetaProductoImg" src="" alt="">
+            </div>
+            <h2 id="tarjetaProductoNombre" class="tarjetaProducto-nombre"></h2>
+            <span id="tarjetaProductoCategoria" class="tarjetaProducto-badge"></span>
+            <p id="tarjetaProductoDesc" class="tarjetaProducto-desc"></p>
+            <div id="tarjetaProductoPrecio" class="tarjetaProducto-precio"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-social">
             <a href="#" aria-label="Facebook">f</a>
@@ -362,21 +369,62 @@
             <img src="../../static/img/png/MigajeraLogo_Completo_SinColor-01.png" alt="Migajera Repostería">
         </div>
         <div class="footer-links">
-            <a href="/">Inicio</a>
-            <a href="/menu">Menú</a>
-            <a href="/about">Nosotros</a>
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="about.html">Nosotros</a>
         </div>
-        <p class="footer-bottom">¿Eres empleado? <a href="/login">Inicia sesión</a></p>
+        <p class="footer-bottom">¿Eres empleado? <a href="#">Inicia sesión</a></p>
     </footer>
 
     <script>
-        // ── FILTROS ──
+        const productos = {
+            'conchas_vainilla': { nombre: 'Conchas de Vainilla', categoria: 'Panadería',  desc: 'Pan dulce tradicional con cubierta sabor vainilla.', precio: 18  },
+            'roles_canela': { nombre: 'Roles de Canela', categoria: 'Panadería',  desc: 'Pan suave enrollado con canela y glaseado dulce.', precio: 32  },
+            'pan_elote': { nombre: 'Pan de Elote', categoria: 'Panadería',  desc: 'Pan artesanal elaborado con elote natural y textura suave.', precio: 35  },
+            'cuernitos_mantequilla': { nombre: 'Cuernitos de Mantequilla', categoria: 'Panadería',  desc: 'Pan hojaldrado con sabor a mantequilla, ideal para acompañar café.', precio: 22  },
+            'donas_glaseadas': { nombre: 'Donas Glaseadas', categoria: 'Panadería',  desc: 'Donas suaves con cobertura glaseada tradicional.', precio: 20  },
+            'orejas_hojaldre': { nombre: 'Orejas de Hojaldre', categoria: 'Panadería',  desc: 'Pan crujiente de hojaldre con azúcar caramelizada.', precio: 18  },
+            'bolillo_artesanal': { nombre: 'Bolillo Artesanal', categoria: 'Panadería',  desc: 'Pan tradicional de corteza crujiente y miga suave.', precio: 8   },
+            'rosca_canela': { nombre: 'Rosca de Canela Glaseada', categoria: 'Panadería',  desc: 'Rosca suave con canela y glaseado dulce.', precio: 260 },
+            'rosca_reyes': { nombre: 'Rosca de Reyes', categoria: 'Panadería',  desc: 'Rosca tradicional de temporada decorada con fruta cristalizada.', precio: 380 },
+            'pan_muerto': { nombre: 'Pan de Muerto', categoria: 'Panadería',  desc: 'Pan tradicional de temporada con azúcar y aroma a azahar.', precio: 35  },
+            'pastel_red_velvet': { nombre: 'Pastel Red Velvet', categoria: 'Pastelería', desc: 'Pastel suave de cocoa con betún de queso crema, ideal para celebraciones.', precio: 420 },
+            'pastel_chocolate_belga': { nombre: 'Pastel de Chocolate Belga', categoria: 'Pastelería', desc: 'Pastel de chocolate intenso con cobertura cremosa y decoración artesanal.', precio: 450 },
+            'pastel_tres_leches': { nombre: 'Pastel de Tres Leches', categoria: 'Pastelería', desc: 'Pastel clásico bañado en mezcla de tres leches con crema batida.', precio: 390 },
+            'pastel_fresas_crema': { nombre: 'Pastel de Fresas con Crema', categoria: 'Pastelería', desc: 'Pastel esponjoso relleno de fresas naturales y crema dulce.', precio: 430 },
+            'galletas_chispas': { nombre: 'Galletas de Chispas de Chocolate', categoria: 'Pastelería', desc: 'Galletas artesanales con chispas de chocolate semiamargo.', precio: 25  },
+            'galletas_decoradas': { nombre: 'Galletas Decoradas de Vainilla', categoria: 'Pastelería', desc: 'Galletas de vainilla decoradas a mano con temática especial.', precio: 30  },
+            'galletas_avena_nuez': { nombre: 'Galletas de Avena y Nuez', categoria: 'Pastelería', desc: 'Galletas horneadas con avena natural y trozos de nuez.', precio: 24  },
+            'galletas_cajeta': { nombre: 'Galletas Rellenas de Cajeta', categoria: 'Pastelería', desc: 'Galletas suaves rellenas de cajeta cremosa.', precio: 28  },
+            'cupcake_chocolate': { nombre: 'Cupcake de Chocolate', categoria: 'Pastelería', desc: 'Cupcake de chocolate con betún cremoso y decoración sencilla.', precio: 35  },
+            'cupcake_vainilla_fresa': { nombre: 'Cupcake Vainilla con Fresa', categoria: 'Pastelería', desc: 'Cupcake de vainilla con topping de crema y fresa natural.', precio: 38  },
+            'cupcake_red_velvet': { nombre: 'Cupcake Red Velvet', categoria: 'Pastelería', desc: 'Cupcake estilo red velvet con betún de queso crema.', precio: 40  },
+            'cupcake_limon': { nombre: 'Cupcake de Limón', categoria: 'Pastelería', desc: 'Cupcake de limón con cobertura ligera y sabor fresco.', precio: 36  },
+            'cheesecake_frutos_rojos': { nombre: 'Cheesecake de Frutos Rojos', categoria: 'Pastelería', desc: 'Postre frío con base de galleta y cobertura de frutos rojos.', precio: 65  },
+            'tiramisu_artesanal': { nombre: 'Tiramisú Artesanal', categoria: 'Pastelería', desc: 'Postre italiano con café, crema y cacao.', precio: 70  },
+            'mousse_chocolate': { nombre: 'Mousse de Chocolate', categoria: 'Pastelería', desc: 'Postre cremoso de chocolate con textura ligera.', precio: 55  },
+            'carlota_limon': { nombre: 'Carlota de Limón', categoria: 'Pastelería', desc: 'Postre frío de limón con capas de galleta y crema.', precio: 50  },
+            'cafe_latte': { nombre: 'Café Latte', categoria: 'Pastelería', desc: 'Bebida caliente preparada con espresso y leche vaporizada.', precio: 45  },
+            'chocolate_caliente': { nombre: 'Chocolate Caliente', categoria: 'Pastelería', desc: 'Bebida caliente de chocolate cremoso.', precio: 42  },
+            'frappe_moka': { nombre: 'Frappé de Moka', categoria: 'Pastelería', desc: 'Bebida fría sabor moka con crema batida.', precio: 58  },
+            'te_chai_helado': { nombre: 'Té Chai Helado', categoria: 'Pastelería', desc: 'Bebida fría especiada con leche y hielo.', precio: 50  },
+            'gelatina_mosaico': { nombre: 'Gelatina Mosaico', categoria: 'Pastelería', desc: 'Gelatina colorida con cubos de diferentes sabores en base cremosa.', precio: 35  },
+            'gelatina_fresa_crema': { nombre: 'Gelatina de Fresa con Crema', categoria: 'Pastelería', desc: 'Gelatina sabor fresa con mezcla cremosa.', precio: 32  },
+            'pay_limon': { nombre: 'Pay de Limón', categoria: 'Pastelería', desc: 'Pay frío de limón con base crujiente de galleta.', precio: 280 },
+            'pay_nuez': { nombre: 'Pay de Nuez', categoria: 'Pastelería', desc: 'Pay tradicional con relleno de nuez y textura suave.', precio: 320 },
+            'pastel_pequeno_personalizado': { nombre: 'Pastel Pequeño Personalizado', categoria: 'Pedidos', desc: 'Pastel personalizado para eventos pequeños, con diseño a elección del cliente.', precio: 350 },
+            'pastel_mediano_personalizado': { nombre: 'Pastel Mediano Personalizado', categoria: 'Pedidos', desc: 'Pastel personalizado de tamaño mediano para celebraciones especiales.', precio: 550 },
+            'pastel_grande_personalizado': { nombre: 'Pastel Grande Personalizado', categoria: 'Pedidos', desc: 'Pastel personalizado grande para eventos y reuniones familiares.', precio: 750 },
+            'docena_cupcakes_personalizados': { nombre: 'Docena de Cupcakes Personalizados', categoria: 'Pedidos', desc: 'Caja con 12 cupcakes decorados según la temática solicitada.', precio: 420 },
+            'pastel_cupcakes_personalizado': { nombre: 'Pastel de Cupcakes Personalizado',  categoria: 'Pedidos', desc: 'Arreglo de cupcakes diseñado en forma de pastel para eventos especiales.', precio: 480 },
+        };
+
         const filtros = document.querySelectorAll('.filtro-btn');
-        const cards   = document.querySelectorAll('.producto-card');
+        const cards = document.querySelectorAll('.producto-card');
         const btnCargar = document.getElementById('btnCargar');
 
         const ITEMS_POR_PAGINA = 6;
-        let filtroActual = 'todo';
+        let filtroActual  = 'todo';
         let visiblesActuales = ITEMS_POR_PAGINA;
 
         function getCardsFiltradas() {
@@ -387,14 +435,10 @@
 
         function renderCards() {
             const filtradas = getCardsFiltradas();
-            cards.forEach(c => {
-                c.classList.remove('visible');
-                c.style.display = 'none';
-            });
+            cards.forEach(c => { c.classList.remove('visible'); c.style.display = 'none'; });
             filtradas.forEach((c, i) => {
                 if (i < visiblesActuales) {
                     c.style.display = '';
-                    // pequeña animación al aparecer
                     setTimeout(() => c.classList.add('visible'), i * 40);
                 }
             });
@@ -416,7 +460,46 @@
             renderCards();
         });
 
-        // Inicializar
+        const overlay = document.getElementById('tarjetaProductoOverlay');
+        const tarjetaProductoClose = document.getElementById('tarjetaProductoClose');
+        const tarjetaProductoImg = document.getElementById('tarjetaProductoImg');
+        const tarjetaProductoNombre = document.getElementById('tarjetaProductoNombre');
+        const tarjetaProductoCat = document.getElementById('tarjetaProductoCategoria');
+        const tarjetaProductoDesc = document.getElementById('tarjetaProductoDesc');
+        const tarjetaProductoPrecio = document.getElementById('tarjetaProductoPrecio');
+
+        function abrirTarjeta(card) {
+            const imgEl = card.querySelector('.producto-img-wrap img');
+            const imgSrc = imgEl ? imgEl.src : '';
+            const imgAlt = imgEl ? imgEl.alt : '';
+            const key = imgSrc.split('/').pop().replace(/\.[^.]+$/, '');
+            const data = productos[key];
+
+            tarjetaProductoImg.src = imgSrc;
+            tarjetaProductoImg.alt = imgAlt;
+            tarjetaProductoNombre.textContent = data ? data.nombre    : imgAlt;
+            tarjetaProductoCat.textContent = data ? data.categoria : '';
+            tarjetaProductoDesc.textContent = data ? data.desc      : '';
+            tarjetaProductoPrecio.textContent = data ? `$${data.precio.toFixed(2)}` : '';
+
+            overlay.classList.add('activo');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarTarjeta() {
+            overlay.classList.remove('activo');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('menuGrid').addEventListener('click', e => {
+            const card = e.target.closest('.producto-card');
+            if (card) abrirTarjeta(card);
+        });
+
+        tarjetaProductoClose.addEventListener('click', cerrarTarjeta);
+        overlay.addEventListener('click', e => { if (e.target === overlay) cerrarTarjeta(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarTarjeta(); });
+
         renderCards();
     </script>
 

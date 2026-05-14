@@ -1,7 +1,3 @@
-/* ================================================
-   styleMenu.css — Estilo página Menú
-   Migajera Repostería
-   ================================================ */
 
 .menu-hero-text h1,
 .menu-hero-text .quote-line,
@@ -10,7 +6,6 @@
     font-family: "Cocogoose", sans-serif;
 }
 
-/* ── HERO ── */
 .menu-hero {
     padding-top: 110px;
     min-height: 560px;
@@ -45,7 +40,6 @@
     pointer-events: none;
 }
 
-/* ── FILTROS ── */
 .menu-filtros {
     display: flex;
     justify-content: center;
@@ -79,7 +73,6 @@
     border-color: var(--color-DarkChocolate);
 }
 
-/* ── GRID ── */
 .menu-grid-section {
     padding: 0 250px 80px;
     max-width: 100%;
@@ -94,7 +87,6 @@
     margin-bottom: 48px;
 }
 
-/* ── TARJETA DE PRODUCTO ── */
 .producto-card {
     background-color: var(--color-MilkTea);
     border-radius: 28px;
@@ -108,6 +100,7 @@
     opacity: 0;
     transform: translateY(14px);
     transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.25s ease;
+    cursor: pointer;
 }
 .producto-card.visible {
     opacity: 1;
@@ -145,7 +138,6 @@
     color: var(--color-DarkChocolate);
 }
 
-/* ── BOTÓN VER MÁS ── */
 .btn-ver {
     padding: 8px 26px;
     border-radius: 50px;
@@ -187,3 +179,105 @@
     transform: scale(1.04);
 }
 
+.tarjetaProducto-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(68, 48, 37, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.tarjetaProducto-overlay.activo {
+    display: flex;
+}
+.tarjetaProducto-card {
+    background: var(--color-MistyRose);
+    border-radius: 32px;
+    padding: 36px 32px 32px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(68,48,37,0.28);
+    animation: tarjetaProductoEntrada 0.28s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes tarjetaProductoEntrada {
+    from { transform: scale(0.92) translateY(16px); opacity: 0; }
+    to   { transform: scale(1)    translateY(0);    opacity: 1; }
+}
+.tarjetaProducto-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-Claro);
+    color: var(--color-DarkChocolate);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.tarjetaProducto-close:hover {
+    background-color: var(--color-Sakura);
+    color: var(--color-Claro);
+    transform: scale(1.1);
+}
+.tarjetaProducto-img-wrap {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tarjetaProducto-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(2px 8px 16px rgba(68,48,37,0.22));
+}
+.tarjetaProducto-nombre {
+    font-family: "Cocogoose", sans-serif;
+    font-size: 32px;
+    color: var(--color-DarkChocolate);
+    line-height: 1.1;
+    margin: 0;
+}
+.tarjetaProducto-badge {
+    display: inline-block;
+    background-color: var(--color-DarkChocolate);
+    color: var(--color-Claro);
+    font-family: "Cocogoose", sans-serif;
+    font-size: 13px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+}
+.tarjetaProducto-desc {
+    font-size: 15px;
+    color: var(--color-DarkChocolate);
+    line-height: 1.65;
+    text-align: justify;
+    max-width: 340px;
+}
+.tarjetaProducto-precio {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--color-DarkChocolate);
+    background: var(--color-Claro);
+    padding: 12px 40px;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(68,48,37,0.12);
+}
