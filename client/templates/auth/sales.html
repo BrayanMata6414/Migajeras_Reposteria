@@ -17,7 +17,7 @@
 
             <h2>
                 Ventas del día:
-                {{ total_ventas }}
+                3
             </h2>
 
         </div>
@@ -34,84 +34,251 @@
 
     <div class="cont-tick">
 
-        {% for venta in ventas %}
+        <div class="ticket">
 
-            <div class="ticket">
+        <h2>
 
-                <h2>
+            Ticket #001
 
-                    Ticket #{{ venta.id_venta }}
+        </h2>
 
-                </h2>
+        <div class="cont-datos">
 
-                <div class="cont-datos">
+            <!-- PRODUCTOS -->
 
-                    <!-- PRODUCTOS -->
+            <div class="cont-com">
 
-                    <div class="cont-com">
+                <div class="com">
 
-                        {% for detalle in venta.detalles %}
+                    <p>
+                        1 Pastel Red Velvet
+                    </p>
 
-                            <div class="com">
+                    <p>
+                        $420.00
+                    </p>
 
-                                <p>
+                </div>
 
-                                    {{ detalle.cantidad }}
-                                    {{ detalle.nombre }}
+                <div class="com">
 
-                                </p>
+                    <p>
+                        2 Café Latte
+                    </p>
 
-                                <p>
+                    <p>
+                        $90.00
+                    </p>
 
-                                    ${{ detalle.subtotal }}
+                </div>
 
-                                </p>
+                <div class="com">
 
-                            </div>
+                    <p>
+                        3 Conchas de Vainilla
+                    </p>
 
-                        {% endfor %}
-
-                    </div>
-
-                    <!-- TOTAL -->
-
-                    <div class="cont-total">
-
-                        <h3>Total</h3>
-
-                        <h3>
-
-                            ${{ venta.total }}
-
-                        </h3>
-
-                    </div>
-
-                    <!-- FECHA -->
-
-                    <div class="cont-fecha">
-
-                        <p>
-
-                            Fecha:
-                            {{ venta.fecha_venta }}
-
-                        </p>
-
-                        <p>
-
-                            Hora:
-                            {{ venta.hora_venta }}
-
-                        </p>
-
-                    </div>
+                    <p>
+                        $54.00
+                    </p>
 
                 </div>
 
             </div>
 
-        {% endfor %}
+            <!-- TOTAL -->
+
+            <div class="cont-total">
+
+                <h3>Total</h3>
+
+                <h3>
+                    $564.00
+                </h3>
+
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="cont-fecha">
+
+                <p>
+                    Fecha: 14/05/2026
+                </p>
+
+                <p>
+                    Hora: 10:25 AM
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ticket">
+
+        <h2>
+
+            Ticket #002
+
+        </h2>
+
+        <div class="cont-datos">
+
+            <!-- PRODUCTOS -->
+
+            <div class="cont-com">
+
+                <div class="com">
+
+                    <p>
+                        1 Pay de Limón
+                    </p>
+
+                    <p>
+                        $280.00
+                    </p>
+
+                </div>
+
+                <div class="com">
+
+                    <p>
+                        4 Cupcake de Chocolate
+                    </p>
+
+                    <p>
+                        $140.00
+                    </p>
+
+                </div>
+
+                <div class="com">
+
+                    <p>
+                        2 Gelatina Mosaico
+                    </p>
+
+                    <p>
+                        $70.00
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- TOTAL -->
+
+            <div class="cont-total">
+
+                <h3>Total</h3>
+
+                <h3>
+                    $490.00
+                </h3>
+
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="cont-fecha">
+
+                <p>
+                    Fecha: 14/05/2026
+                </p>
+
+                <p>
+                    Hora: 01:40 PM
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ticket">
+
+        <h2>
+
+            Ticket #003
+
+        </h2>
+
+        <div class="cont-datos">
+
+            <!-- PRODUCTOS -->
+
+            <div class="cont-com">
+
+                <div class="com">
+
+                    <p>
+                        1 Pastel Mediano Personalizado
+                    </p>
+
+                    <p>
+                        $550.00
+                    </p>
+
+                </div>
+
+                <div class="com">
+
+                    <p>
+                        6 Roles de Canela
+                    </p>
+
+                    <p>
+                        $192.00
+                    </p>
+
+                </div>
+
+                <div class="com">
+
+                    <p>
+                        2 Frappé de Moka
+                    </p>
+
+                    <p>
+                        $116.00
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- TOTAL -->
+
+            <div class="cont-total">
+
+                <h3>Total</h3>
+
+                <h3>
+                    $858.00
+                </h3>
+
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="cont-fecha">
+
+                <p>
+                    Fecha: 14/05/2026
+                </p>
+
+                <p>
+                    Hora: 05:15 PM
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
     </div>
 
@@ -137,6 +304,38 @@
 
                 <h3>
                     Pan
+                </h3>
+
+                <h3>
+                    Galleta
+                </h3>
+
+                <h3>
+                    Cupcake
+                </h3>
+
+                <h3>
+                    Postre
+                </h3>
+
+                <h3>
+                    Bebida
+                </h3>
+
+                <h3>
+                    Gelatina
+                </h3>
+
+                <h3>
+                    Pay
+                </h3>
+
+                <h3>
+                    Rosca
+                </h3>
+
+                <h3>
+                    Temporada
                 </h3>
 
             </div>
