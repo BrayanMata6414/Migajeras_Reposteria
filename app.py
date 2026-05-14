@@ -369,7 +369,7 @@ def products():
             'client',
             'static',
             'img',
-            'jpg',
+            'png',
             nombre_imagen
         )
 
