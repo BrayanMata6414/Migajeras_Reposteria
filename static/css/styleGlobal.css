@@ -26,6 +26,10 @@ body
     background-color: var(--color-Claro);
     letter-spacing: 2px;
     overflow-x: hidden;
+
+    background-image: url(../img/svg/Fondo_Migajas.svg);
+    background-size: 150px;
+    background-position: center;
 }
 
 /* ── NAVBAR ── */
