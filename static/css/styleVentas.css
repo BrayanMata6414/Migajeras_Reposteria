@@ -5,6 +5,12 @@
     justify-content: space-evenly;
 }
 
+.boton
+{
+    
+    background-color: var(--color-Claro);
+}
+
 .cont-opciones .boton
 {
     color: var(--color-DarkChocolate);

@@ -203,6 +203,11 @@
     gap: 48px;
     flex-wrap: wrap;
     position: relative;
+
+    padding: 10px;
+    border-radius: 20px;
+    border: 5px solid var(--color-DarkChocolate);
+    background-color: var(--color-Claro);
 }
 .visita-donut {
     position: absolute;
