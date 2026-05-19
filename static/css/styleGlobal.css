@@ -33,10 +33,11 @@ body
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px;
-    position: absolute;
+    padding: 10px 20px;
+    position: sticky;
     top: 0;
     z-index: 100;
+    margin-bottom: -90px;
 }
 .nav-cli .navbar {
     width: 80%;
