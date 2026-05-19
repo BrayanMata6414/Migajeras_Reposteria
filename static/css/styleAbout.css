@@ -159,10 +159,13 @@ main {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 1100px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px; 
     margin: 60px auto 0;
     padding: 0 40px;
     min-height: 400px;
+    background: none;
 }
 .migajeros-intro-text {
     z-index: 2;
@@ -182,13 +185,15 @@ main {
     color: var(--color-DarkChocolate);
     line-height: 1;
 }
+
 .migajeros-blob {
-    position: absolute;
-    right: 0;
+    position: static;
+    right: 100px;       /* ← más hacia el centro */
     top: 50%;
-    transform: translateY(-50%);
+    transform: none;
     width: clamp(280px, 38vw, 460px);
     pointer-events: none;
+    flex-shrink: 0;
 }
 
 /* ── EQUIPO ── */
@@ -200,7 +205,9 @@ main {
     padding: 60px 40px 100px;
     max-width: 100%;
     margin: 0 auto;
-    background: linear-gradient(to bottom, var(--color-Claro), var(--color-MistyRose));
+    margin-top: -400px;
+    padding-top: 400px;
+    background: linear-gradient(to bottom, transparent, var(--color-MistyRose));
 }
 .team-card {
     display: flex;
