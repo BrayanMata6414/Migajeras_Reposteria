@@ -85,6 +85,9 @@ body
     justify-content: center;
     align-items: center;
 
+    position: sticky;
+    top: 0;
+
     padding: 20px;
 }
 .nav-emp .navbar
